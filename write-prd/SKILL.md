@@ -27,7 +27,7 @@ Through an open-ended conversation, develop a complete understanding of the prob
 - Articulate clear failure conditions: what specific outcomes, gaps, or user/stakeholder reactions would indicate the solution was incorrectly designed or implemented.
 
 **How to conduct the interview:**
-- Ask one focused question at a time. Wait for the answer before asking the next.
+- Ask focused questions. Group related questions together when it makes sense, but avoid overwhelming the user with too many at once.
 - When an answer opens a new branch (edge case, persona variation, scope boundary), follow it to resolution before continuing.
 - When a decision depends on a prior unresolved decision, surface the dependency and resolve the blocker first.
 - Push back on vague answers. "It depends" is not an answer — ask what it depends on, then ask about each case.
