@@ -53,8 +53,6 @@ Follow the template below. Every section is required. Write "None." for sections
 
 **File location:** Write the PRD to `.specs/[feature-slug]/PRD.md`. Derive the slug from the feature name: lowercase, words separated by hyphens (e.g. `user-onboarding`, `payment-refunds`). Create the directory if it does not exist. This keeps the PRD co-located with related documents (plans, specs) that will be added later for the same initiative.
 
-**State tracking:** When creating the directory, also create `.specs/[feature-slug]/STATE.md` using the template at the end of this skill. Mark Step 1 as complete.
-
 ### Step 3 — Review with the user
 
 Present the draft. Ask:
@@ -63,8 +61,6 @@ Present the draft. Ask:
 - Are the success criteria measurable as stated?
 
 If the feedback surfaces new information, gaps, or contradictions, return to Step 1 and continue the interview before updating the draft. Repeat steps 1–3 until the PRD is complete and accurate.
-
-Once the PRD is accepted, update STATE.md marking Steps 2 and 3 as complete.
 
 ## PRD Template
 
@@ -222,23 +218,3 @@ If you are building order tracking but not order editing, "order editing" must a
 **Conflating constraints with requirements**
 A constraint limits *how* you can solve the problem ("must comply with GDPR"). A requirement defines *what* the system must do ("must allow users to delete their account data"). Keep them separate.
 
----
-
-## STATE.md Template
-
-```markdown
-# State: [Feature or Product Name]
-
-## write-prd
-- [ ] Step 1 — Context gathered
-- [ ] Step 2 — PRD drafted
-- [ ] Step 3 — Review complete
-
-## plan-prd
-- [ ] Step 1 — PRD located and read
-- [ ] Step 2 — Codebase explored
-- [ ] Step 3 — Architectural decisions extracted
-- [ ] Step 4 — Phases drafted
-- [ ] Step 5 — Review complete
-- [ ] Step 6 — PLAN.md written
-```

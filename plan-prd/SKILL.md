@@ -15,8 +15,6 @@ Look for the PRD at `.specs/[feature-slug]/PRD.md`. If the path is ambiguous or 
 
 Read the entire PRD before doing anything else.
 
-Read `.specs/[feature-slug]/STATE.md` to understand what has already been completed. Update it marking Step 1 as complete.
-
 ### Step 2 — Explore the codebase
 
 Before identifying architectural decisions, explore the existing codebase to understand:
@@ -26,8 +24,6 @@ Before identifying architectural decisions, explore the existing codebase to und
 - Integration points relevant to the feature
 
 This step grounds the plan in how the system actually works, not how it might be assumed to work. Architectural decisions in the next step must align with existing patterns unless the PRD explicitly calls for deviation.
-
-Update STATE.md marking Step 2 as complete.
 
 ### Step 3 — Extract architectural decisions
 
@@ -41,8 +37,6 @@ Durable decisions to identify:
 - **Auth strategy:** how access control is enforced
 
 Do not invent decisions the PRD did not make. If a decision cannot be determined from the PRD or the codebase, record it as an open decision in the plan.
-
-Update STATE.md marking Step 3 as complete.
 
 ### Step 4 — Draft vertical slices
 
@@ -66,8 +60,6 @@ Include a test step in a phase only when:
 
 Do not add tests as a standalone phase. Do not write tests for coverage.
 
-Update STATE.md marking Step 4 as complete.
-
 ### Step 5 — Review with the user
 
 Before presenting to the user, verify that every requirement ID from the PRD appears in at least one phase's "PRD requirements satisfied" list. If any requirement is uncovered, assign it to a phase or explicitly mark it as deferred with a reason.
@@ -79,24 +71,9 @@ Present the plan as a list of phase titles with one-sentence objectives. Ask:
 
 If the user surfaces gaps or changes, update the draft before writing the file.
 
-Update STATE.md marking Step 5 as complete.
-
 ### Step 6 — Write the plan file
 
-Write the final plan to `.specs/[feature-slug]/PLAN.md` in the same directory as the PRD.
-
-Update STATE.md marking Step 6 as complete and append an `## Implementation` section with one checkbox per phase, derived from the phases just written:
-
-```markdown
-## Implementation
-- [ ] Phase 1: [Name]
-- [ ] Phase 2: [Name]
-...
-```
-
-As each phase is implemented, the corresponding checkbox should be marked complete.
-
----
+Write the final plan to `.specs/[feature-slug]/PLAN.md` in the same directory as the PRD. 
 
 ## Plan Template
 
@@ -122,8 +99,6 @@ Decisions required for implementation but not determinable from the PRD or codeb
 |----------|--------------------------|--------|
 | [Decision] | [What needs to be decided and why it matters] | Phase N |
 
----
-
 ## Phase 1: [Name — short, outcome-oriented]
 
 **Objective:** [One sentence: what this phase delivers and why it matters]
@@ -140,18 +115,12 @@ Decisions required for implementation but not determinable from the PRD or codeb
 
 **Output:** [What is verifiable or observable when all steps are done. Be specific: a route responds, a record is persisted, a UI state changes.]
 
----
-
 ## Phase 2: [Name]
 
 [Repeat structure]
 
----
-
 [Continue for each phase]
 ```
-
----
 
 ## Heuristics
 
@@ -172,8 +141,6 @@ Decisions required for implementation but not determinable from the PRD or codeb
 - "Create a `POST /api/[resource]` endpoint that accepts `{ field: type, ... }` and persists a `[ModelName]` record"
 - "Render the `[screen name]` screen, showing `[field]` from the `[ModelName]` returned by `GET /api/[resource]`"
 - "Extend the `[ModelName]` schema to include `[field]: [type]`, migrating existing records to `[default value]`"
-
----
 
 ## Common Mistakes
 
