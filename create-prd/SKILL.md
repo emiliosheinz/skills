@@ -3,7 +3,7 @@ name: write-prd
 description: Guides creation of structured, explicit, and detailed Product Requirement Documents (PRDs). Use when the user wants to write a PRD, define a feature, or plan what to build before implementation begins.
 ---
 
-# Write PRD
+# Create PRD
 
 **Goal:** produce a PRD that is precise, self-contained, and unambiguous. A reader should know exactly what to build and why without asking follow-up questions.
 
@@ -51,7 +51,7 @@ If any cannot be answered from what the user has said, continue the interview.
 
 Follow the template below. Every section is required. Write "None." for sections with no content — do not omit them.
 
-**File location:** Write the PRD to `.specs/[feature-slug]/PRD.md`. Derive the slug from the feature name: lowercase, words separated by hyphens (e.g. `user-onboarding`, `payment-refunds`). Create the directory if it does not exist. This keeps the PRD co-located with related documents (plans, specs) that will be added later for the same initiative.
+**File location:** Create the PRD to `.specs/[feature-slug]/PRD.md`. Derive the slug from the feature name: lowercase, words separated by hyphens (e.g. `user-onboarding`, `payment-refunds`). Create the directory if it does not exist. This keeps the PRD co-located with related documents (plans, specs) that will be added later for the same initiative.
 
 ### Step 3 — Review with the user
 
