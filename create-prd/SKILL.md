@@ -3,7 +3,7 @@ name: write-prd
 description: Guides creation of structured, explicit, and detailed Product Requirement Documents (PRDs). Use when the user wants to write a PRD, define a feature, or plan what to build before implementation begins.
 ---
 
-# Create PRD
+# PRD Creator 
 
 **Goal:** produce a PRD that is precise, self-contained, and unambiguous. A reader should know exactly what to build and why without asking follow-up questions.
 
