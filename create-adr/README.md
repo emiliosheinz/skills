@@ -38,3 +38,7 @@ A `NNN-kebab-case-title.md` file at `docs/adr/` (or a user-specified directory) 
 ```
 
 The agent will begin gathering context immediately. Provide as much detail as possible about the decision, the alternatives considered, and the forces that shaped the choice — the more context, the more useful the ADR will be to future engineers.
+
+## Attribution
+
+Based on [create-adr](https://github.com/tech-leads-club/agent-skills/blob/main/packages/skills-catalog/skills/(creation)/create-adr/SKILL.md) by [Tech Leads Club](https://github.com/tech-leads-club), licensed under [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/). Changes have been made to the original.

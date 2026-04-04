@@ -410,3 +410,7 @@ The rationale is *why this option and not the others* — not just what was chos
 - "Create an ADR for moving our frontend to Next.js"
 - "I need to record why we chose Kafka over RabbitMQ"
 - "Add an architecture decision record for our authentication approach"
+
+## Attribution
+
+Based on [create-adr](https://github.com/tech-leads-club/agent-skills/blob/main/packages/skills-catalog/skills/(creation)/create-adr/SKILL.md) by [Tech Leads Club](https://github.com/tech-leads-club), licensed under [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/). Changes have been made to the original.
