@@ -42,3 +42,7 @@ A Markdown RFC document containing:
 ```
 
 The agent begin gathering context immediately. Provide as much detail as possible about the change you want to propose, the alternatives you have in mind, and who needs to approve the decision — the more context, the more useful the RFC will be to reviewers.
+
+## Attribution
+
+Based on [create-rfc](https://github.com/tech-leads-club/agent-skills/blob/main/packages/skills-catalog/skills/(creation)/create-rfc/SKILL.md) by [Tech Leads Club](https://github.com/tech-leads-club), licensed under [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/). Changes have been made to the original.

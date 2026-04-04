@@ -301,3 +301,7 @@ Would you like me to add anything else?
 - "Create a request for comments on our on-call rotation policy"
 - "Draft an RFC comparing self-hosted vs managed Kafka"
 - "I need to get approval to adopt a new design system"
+
+## Attribution
+
+Based on [create-rfc](https://github.com/tech-leads-club/agent-skills/blob/main/packages/skills-catalog/skills/(creation)/create-rfc/SKILL.md) by [Tech Leads Club](https://github.com/tech-leads-club), licensed under [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/). Changes have been made to the original.
