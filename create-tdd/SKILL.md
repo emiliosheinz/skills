@@ -1,6 +1,6 @@
 ---
 name: create-tdd
-description: Creates Technical Design Documents (TDD) through interactive discovery. Use when user asks to "write a design doc", "create a TDD", "technical spec", "architecture document", or "design proposal". Do NOT use for README files, API docs, or general documentation.
+description: Creates Technical Design Documents (TDD) through interactive discovery. Use when the user says "create a TDD", "write a TDD", "create a TDD for X", "write a design doc", "technical spec", "architecture document", or "design proposal". Do NOT use for PRD, RFC, or ADR docs.
 ---
 
 # TDD Creator

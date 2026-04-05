@@ -1,6 +1,6 @@
 ---
 name: create-adr
-description: Creates Architecture Decision Records (ADRs) to document significant architectural choices and their rationale for future team members. Use when the user ask to "write an ADR", "document a decision", "record why we chose X", "add an architecture decision record", "create an ADR for", or wants to capture the reasoning behind a technical choice so the team understands it later.
+description: Creates Architecture Decision Records (ADRs) to document significant architectural choices and their rationale for future team members. Use when the user says "create an ADR", "write an ADR", "create an ADR for X", "document a decision", "record why we chose X", or wants to capture the reasoning behind a technical choice so the team understands it later. Do NOT use for TDD, RFC, or PRD docs.
 ---
 
 # ADR Creator
