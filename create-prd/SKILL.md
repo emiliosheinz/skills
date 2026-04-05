@@ -7,6 +7,42 @@ description: Guides creation of structured, explicit, and detailed Product Requi
 
 **Goal:** produce a PRD that is precise, self-contained, and unambiguous. A reader should know exactly what to build and why without asking follow-up questions.
 
+## PRD vs TDD
+
+| Aspect | PRD | TDD |
+|--------|-----|-----|
+| **Purpose** | Define what to build and why | Design + plan implementation |
+| **Audience** | Product team, engineering team | Engineering team |
+| **Focus** | What are we building, for whom, and why? | How do we build X? |
+| **Output** | Feature requirements, user stories | Architecture + implementation plan |
+| **Timing** | Before implementation, during planning | After requirements are defined |
+
+Use PRD when you need to **define the product requirements**. Use TDD when you need to document the **technical approach**.
+
+## PRD vs RFC
+
+| Aspect | PRD | RFC |
+|--------|-----|-----|
+| **Purpose** | Define what to build and why | Propose + decide on significant change |
+| **Audience** | Product team, engineering team | Broad stakeholders, leadership |
+| **Focus** | What are we building, for whom, and why? | Should we do X? Which option? |
+| **Output** | Feature requirements, user stories | Decision + rationale |
+| **Timing** | After direction is decided | Before committing to a direction |
+
+Use PRD when the direction is decided and you need to **define what to build**. Use RFC when the **decision itself** needs alignment.
+
+## PRD vs ADR
+
+| Aspect | PRD | ADR |
+|--------|-----|-----|
+| **Purpose** | Define what to build and why | Record a finalized architectural decision |
+| **Audience** | Product team, engineering team | Future engineers, architects |
+| **Focus** | What are we building, for whom, and why? | Why did we choose X over Y? |
+| **Output** | Feature requirements, user stories | Decision + consequences |
+| **Timing** | Before implementation, during planning | After a significant decision is made |
+
+Use PRD when you need to **define product requirements**. Use ADR when you need to **record why a decision was made** for future reference.
+
 ## Process
 
 ### Step 1 — Gather context

@@ -7,6 +7,42 @@ description: Creates Technical Design Documents (TDD) through interactive discov
 
 You create Technical Design Documents that communicate architecture decisions, implementation plans, and risk assessments. TDDs document **architectural decisions and contracts**, not implementation code.
 
+## TDD vs PRD
+
+| Aspect | TDD | PRD |
+|--------|-----|-----|
+| **Purpose** | Design + plan implementation | Define what to build and why |
+| **Audience** | Engineering team | Product team, engineering team |
+| **Focus** | How do we build X? | What are we building, for whom, and why? |
+| **Output** | Architecture + implementation plan | Feature requirements, user stories |
+| **Timing** | After requirements are defined | Before implementation, during planning |
+
+Use TDD when you need to document the **technical approach**. Use PRD when you need to **define the product requirements**.
+
+## TDD vs RFC
+
+| Aspect | TDD | RFC |
+|--------|-----|-----|
+| **Purpose** | Design + plan implementation | Propose + decide on significant change |
+| **Audience** | Engineering team | Broad stakeholders, leadership |
+| **Focus** | How do we build X? | Should we do X? Which option? |
+| **Output** | Architecture + implementation plan | Decision + rationale |
+| **Timing** | After direction is decided | Before committing to a direction |
+
+Use TDD when the decision is made and you need to document the **implementation approach**. Use RFC when the **decision itself** needs alignment.
+
+## TDD vs ADR
+
+| Aspect | TDD | ADR |
+|--------|-----|-----|
+| **Purpose** | Design + plan implementation | Record a finalized architectural decision |
+| **Audience** | Engineers implementing the solution | Future engineers, architects |
+| **Focus** | How do we build X? | Why did we choose X over Y? |
+| **Output** | Architecture + implementation plan | Decision + consequences |
+| **Timing** | During implementation planning | After a significant decision is made |
+
+Use TDD when you need to document **how to implement**. Use ADR when you need to **record why a decision was made** for future reference.
+
 ## Core Principle: Architecture Over Implementation
 
 Before adding any detail, ask: "If we change frameworks, does this still apply?"

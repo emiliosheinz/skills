@@ -25,48 +25,41 @@ Do NOT use for:
 - Simple configuration choices or trivial code decisions
 - Meeting notes or general documentation
 
-## ADR vs PRD — Critical Distinction
+## ADR vs PRD
 
 | Aspect | ADR | PRD |
 |--------|-----|-----|
-| **Focus** | Architectural choices and rationale | Product features and requirements |
-| **Audience** | Engineers (current and future) | Product managers, designers, engineers |
-| **Content** | Context, decision, consequences | Problem statement, user needs, requirements |
-| **Timing** | After a significant architectural decision is made | Before implementation, during planning |
-| **Format** | Structured document (MADR, Nygard, Y-Statement) | Structured document (overview, requirements, etc.) |
-| **Mutability** | Immutable — superseded, never edited | Iterative — evolves during planning |
+| **Purpose** | Record a finalized architectural decision | Define what to build and why |
+| **Audience** | Future engineers, architects | Product team, engineering team |
+| **Focus** | Why did we choose X over Y? | What are we building, for whom, and why? |
+| **Output** | Decision + consequences | Feature requirements, user stories |
+| **Timing** | After a significant decision is made | Before implementation, during planning |
 
-If the user says "I need to define what we need to build" → use `create-prd`.
-If the user says "I need to document why we chose X" → use this skill.
+Use ADR when you need to **record why a decision was made**. Use PRD when you need to **define product requirements**.
 
-## ADR vs RFC — Critical Distinction
+## ADR vs RFC
 
 | Aspect | ADR | RFC |
 |--------|-----|-----|
-| **Timing** | Decision already made (or being finalized) | Before the decision (seeking input) |
-| **Purpose** | Record for future team members | Proposal seeking approval |
-| **Audience** | Engineers joining months or years later | Current stakeholders |
-| **Length** | Short — 200–500 words | Long — thorough comparison |
-| **Mutability** | Immutable — superseded, never edited | Iterative — evolves during review |
-| **Tone** | Historical record | Deliberative proposal |
+| **Purpose** | Record a finalized architectural decision | Propose + decide on significant change |
+| **Audience** | Future engineers, architects | Broad stakeholders, leadership |
+| **Focus** | Why did we choose X over Y? | Should we do X? Which option? |
+| **Output** | Decision + consequences | Decision + rationale |
+| **Timing** | After a significant decision is made | Before committing to a direction |
 
-If the user says "I need to decide whether to do X" → use `create-rfc`.
-If the user says "We decided to do X, let me document it" → use this skill.
+Use ADR when you need to **record the rationale of a decision** for future reference. Use RFC when you need to **propose and align on a decision**.
 
-## ADR vs TDD — Critical Distinction
+## ADR vs TDD
 
 | Aspect | ADR | TDD |
 |--------|-----|-----|
-| **Focus** | Architectural decision and rationale | Technical design and implementation plan |
-| **Audience** | Engineers (current and future) | Engineers implementing the solution |
-| **Content** | Context, decision, consequences | System design, data models, API contracts
-| **Timing** | After a significant architectural decision is made | After the decision, during implementation planning |
-| **Format** | Structured document (MADR, Nygard, Y-Statement) | Detailed design document with diagrams, code snippets |
-| **Mutability** | Immutable — superseded, never edited | Iterative — evolves during design and implementation |
+| **Purpose** | Record a finalized architectural decision | Design + plan implementation |
+| **Audience** | Future engineers, architects | Engineers implementing the solution |
+| **Focus** | Why did we choose X over Y? | How do we build X? |
+| **Output** | Decision + consequences | Architecture + implementation plan |
+| **Timing** | After a significant decision is made | During implementation planning |
 
-If the user says "I need to document how we will implement X" → use `create-tdd`
-If the user says "I need to document why we chose X" → use this skill.
-
+Use ADR when you need to **record why a decision was made**. Use TDD when you need to document **how to implement** the solution.
 
 ## ADR Format Selection
 

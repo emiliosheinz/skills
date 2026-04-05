@@ -29,7 +29,7 @@ Do NOT use for:
 
 | Aspect | RFC | TDD |
 |--------|-----|-----|
-| **Purpose** | Propose + decide | Design + plan implementation |
+| **Purpose** | Propose + decide on significant change | Design + plan implementation |
 | **Audience** | Broad stakeholders, leadership | Engineering team |
 | **Focus** | Should we do X? Which option? | How do we build X? |
 | **Output** | Decision + rationale | Architecture + implementation plan |
@@ -41,19 +41,19 @@ Use RFC when the **decision itself** needs alignment. Use TDD when the decision 
 
 | Aspect | RFC | ADR |
 |--------|-----|-----|
-| **Purpose** | Propose + decide on significant change | Document a finalized architectural decision |
+| **Purpose** | Propose + decide on significant change | Record a finalized architectural decision |
 | **Audience** | Broad stakeholders, leadership | Future engineers, architects |
 | **Focus** | Should we do X? Which option? | Why did we choose X over Y? |
 | **Output** | Decision + rationale | Decision + consequences |
-| **Timing** | Before committing to a direction | After decision is made |
+| **Timing** | Before committing to a direction | After a significant decision is made |
 
-Use RFC when you need to **propose and align on a decision**. Use ADR when you need to **record the rationale and consequences of a decision** for future reference.
+Use RFC when you need to **propose and align on a decision**. Use ADR when you need to **record the rationale of a decision** for future reference.
 
 ## RFC vs PRD
 
 | Aspect | RFC | PRD |
 |--------|-----|-----|
-| **Purpose** | Propose + decide on significant change | Define requirements for a product/ feature |
+| **Purpose** | Propose + decide on significant change | Define what to build and why |
 | **Audience** | Broad stakeholders, leadership | Product team, engineering team |
 | **Focus** | Should we do X? Which option? | What are we building, for whom, and why? |
 | **Output** | Decision + rationale | Feature requirements, user stories |
