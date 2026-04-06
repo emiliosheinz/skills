@@ -7,41 +7,38 @@ description: Executes implementation tasks by consuming existing PRD and TDD art
 
 You execute implementation tasks by translating existing requirements (PRD) and technical design (TDD) into working, tested code. You follow strict Test-Driven Development and deliver work in small, incremental slices.
 
-## Implement vs Create-PRD
+## Skill Routing
 
-| Aspect | Implement | Create-PRD |
-|--------|-----------|------------|
-| **Purpose** | Turn requirements into working code | Define what to build and why |
-| **Input** | PRD + TDD artifacts | User's problem space |
-| **Output** | Tested, working code | Product requirements document |
-| **Timing** | After PRD and TDD exist | Before implementation planning |
-
-Use Implement when requirements and design are defined and you need to **write the code**. Use Create-PRD when you need to **define what to build**.
-
-## Implement vs Create-TDD
-
-| Aspect | Implement | Create-TDD |
-|--------|-----------|------------|
-| **Purpose** | Turn requirements into working code | Design the technical approach |
-| **Input** | PRD + TDD artifacts | Requirements + problem space |
-| **Output** | Tested, working code | Architecture + implementation plan |
-| **Timing** | After technical design is complete | After requirements, before coding |
-
-Use Implement when the architecture is decided and you need to **write the code**. Use Create-TDD when you need to **design the technical approach**.
+| Signal | Skill |
+|--------|-------|
+| Requirements and design exist, need working code | **Implement** (this skill) |
+| Need to define what to build and why | `/create-prd` |
+| Need to design the technical approach | `/create-tdd` |
 
 ## Core Principle: Small Vertical Slices with TDD
 
 Every unit of work follows **Red-Green-Refactor**:
 
-1. **Red** — Write one failing test for the smallest meaningful behavior
-2. **Green** — Write the minimum code to make the test pass
-3. **Refactor** — Improve code structure while keeping all tests green
+1. **Red** -- Write one failing test for the smallest meaningful behavior
+2. **Green** -- Write the minimum code to make the test pass
+3. **Refactor** -- Improve code structure while keeping all tests green
 
 Each slice delivers a thin but complete piece of functionality that can be verified independently. Never implement multiple behaviors before writing tests. Never write tests after the implementation.
 
+## Staying Lean
+
+Implementation generates a lot of context: artifact contents, test output, code diffs, lint results. Be intentional about what you hold onto.
+
+- **Read selectively.** You rarely need the full PRD and TDD at once. Start with the implementation plan to identify the target phase, then pull in only the requirements and design sections that phase touches.
+- **Extract, then let go.** Once you have pulled out the facts you need from an artifact (requirement IDs, API contracts, constraints), you do not need the raw document anymore. Re-read a specific section later if something comes up.
+- **Shed finished work.** After a task's TDD cycle is green, the test output and code diff have served their purpose. Move on. Re-read a file only when the next task needs to reference it.
+- **Delegate heavy lifting.** When a chunk of work is self-contained (running the full test suite, verifying requirements against the PRD, a single Red-Green-Refactor cycle), consider handing it to a sub-agent so the output stays out of your context. Give sub-agents specific inputs: file paths, section references, constraints -- not open-ended instructions.
+
+These are guidelines, not rules. Use your judgment about what to hold, what to shed, and when delegation is worth the overhead.
+
 ## Process
 
-### Step 1 — Understand the Context
+### Step 1 -- Understand the Context
 
 Locate and read the relevant artifacts:
 
@@ -54,7 +51,7 @@ If either artifact is missing, do not proceed. Instead, tell the user which arti
 
 - Missing PRD: "No PRD found. Use `/create-prd` to define the requirements first."
 - Missing TDD: "No TDD found. Use `/create-tdd` to define the technical design first."
-- Missing both: "No PRD or TDD found. Start with `/create-prd` to define requirements, then `/create-tdd` for the technical design."
+- Missing both: "No PRD or TDD found. Start with `/create-prd`, then `/create-tdd`."
 
 After reading the artifacts, extract:
 
@@ -78,7 +75,7 @@ Constraints: [key constraints]
 
 Wait for user confirmation before moving to Step 2.
 
-### Step 2 — Break the Phase into Tasks
+### Step 2 -- Break the Phase into Tasks
 
 Each TDD phase is already a vertical slice. Do not re-slice it. Instead, if the phase contains multiple distinct behaviors, break it into ordered tasks. Each task should be completable in a single TDD cycle (Red-Green-Refactor).
 
@@ -95,19 +92,19 @@ Task 3: [behavior description]
 
 Wait for user confirmation before starting execution.
 
-### Step 3 — Execute (Red-Green-Refactor)
+### Step 3 -- Execute (Red-Green-Refactor)
 
 For each task, follow this cycle strictly:
 
-#### 3a. Red — Write a Failing Test
+#### 3a. Red -- Write a Failing Test
 
 - Write one test that captures the expected behavior for this task
 - Run the test suite and confirm the new test fails
-- If the test passes immediately, the behavior already exists — skip to the next task
+- If the test passes immediately, the behavior already exists -- skip to the next task
 
 **Important**: Run the tests. Do not assume the result. The Red step is only complete when you have observed the failure.
 
-#### 3b. Green — Minimal Implementation
+#### 3b. Green -- Minimal Implementation
 
 - Write the minimum code necessary to make the failing test pass
 - Run the full test suite (not just the new test)
@@ -133,24 +130,26 @@ After completing one task, briefly state what was done and move to the next. Do 
 - Existing code conflicts with the planned approach
 - A dependency is missing or unavailable
 
-### Step 4 — Review and Validate
+### Step 4 -- Review and Validate
 
 After all tasks are complete:
 
-1. **Run the full test suite** — all tests must pass
-2. **Run linters and formatters** — use whatever is configured in the project (Prettier, ESLint, Biome, etc.). Fix any issues.
-3. **Verify against PRD** — check each requirement that was in scope. Confirm the implementation satisfies it.
-4. **Verify against TDD** — confirm the implementation follows the architectural decisions and contracts defined in the TDD.
+1. **Run the full test suite** -- all tests must pass
+2. **Run linters and formatters** -- use whatever is configured in the project (Prettier, ESLint, Biome, etc.). Fix any issues.
+3. **Verify against PRD** -- check each requirement that was in scope. Confirm the implementation satisfies it.
+4. **Verify against TDD** -- confirm the implementation follows the architectural decisions and contracts defined in the TDD.
+
+These checks are independent -- run them in parallel when possible.
 
 If any verification fails, return to Step 3 and address the gap.
 
-### Step 5 — Summarize and Request Feedback
+### Step 5 -- Summarize and Request Feedback
 
-Briefly summarize what was implemented, any decisions made that were not covered by the artifacts, and open questions if any. Keep it short — the code and tests speak for themselves.
+Briefly summarize what was implemented, any decisions made that were not covered by the artifacts, and open questions if any. Keep it short -- the code and tests speak for themselves.
 
 Wait for user feedback. If the user requests changes, return to Step 3 for the affected tasks.
 
-### Step 6 — Iterate
+### Step 6 -- Iterate
 
 When the user provides feedback:
 
@@ -163,7 +162,7 @@ When the user provides feedback:
 
 Repeat until the user is satisfied.
 
-### Step 7 — Commit (Manual Gate)
+### Step 7 -- Commit (Manual Gate)
 
 **Never commit automatically.** When the user is satisfied with the implementation:
 
@@ -194,29 +193,21 @@ Do not invent answers to these situations. Surface them and let the user decide.
 
 ## Common Mistakes
 
-**Implementing without reading the artifacts first**
-The PRD and TDD exist for a reason. Read them fully before writing any code. Do not rely on the user's verbal summary alone.
+**Implementing without reading the artifacts first.**
+The PRD and TDD exist for a reason. Read them before writing any code. Do not rely on the user's verbal summary alone.
 
-**Writing tests after the implementation**
+**Writing tests after the implementation.**
 This is not TDD. Always write the test first, confirm it fails, then implement. Tests written after the fact tend to test the implementation rather than the behavior.
 
-**Bundling multiple behaviors into one task**
+**Bundling multiple behaviors into one task.**
 Wrong: "Implement user registration with validation, email confirmation, and profile creation."
-Right: Three separate tasks — one for registration, one for validation, one for email confirmation. Profile creation might be a separate phase entirely.
+Right: Three separate tasks -- one for registration, one for validation, one for email confirmation.
 
-**Refactoring while tests are red**
-Never refactor when a test is failing. Get to Green first, then refactor. Refactoring on Red makes it impossible to know whether the refactor broke something or the implementation was already wrong.
+**Refactoring while tests are red.**
+Never refactor when a test is failing. Get to Green first, then refactor.
 
-**Committing without explicit approval**
+**Committing without explicit approval.**
 This skill never commits automatically. Always present the proposed commit and wait.
 
-**Over-implementing beyond what the test demands**
+**Over-implementing beyond what the test demands.**
 In the Green step, write only the code the failing test requires. Anticipatory code without a corresponding test leads to untested paths and unnecessary complexity.
-
-## Example Prompts
-
-- "Implement phase 1 of the user onboarding feature"
-- "Implement the payment processing flow from the TDD"
-- "Start implementing the auth module"
-- "Build the API endpoints defined in the TDD"
-- "Execute the implementation plan for stripe-integration"
