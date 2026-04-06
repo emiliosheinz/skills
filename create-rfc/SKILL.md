@@ -137,6 +137,8 @@ If any required fields are missing, request them using "AskUserQuestion" before 
 
 ### Step 4: Generate RFC Document
 
+**File location:** Write the RFC to `.specs/[feature-slug]/RFC.md`. Derive the slug from the proposal title: lowercase, words separated by hyphens (e.g. `migrate-to-postgresql`, `adopt-microservices`). Create the directory if it does not exist. This co-locates the RFC with related documents (PRD, TDD) for the same initiative.
+
 Generate the RFC in Markdown following the templates below.
 
 ### Step 5: Offer Next Steps
