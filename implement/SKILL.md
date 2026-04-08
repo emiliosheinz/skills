@@ -43,6 +43,7 @@ Locate and read available artifacts:
 - Look for PRD at `.specs/[feature-slug]/PRD.md`
 - Look for technical design at `.specs/[feature-slug]/TECHNICAL-DESIGN.md`
 - Look for implementation plan at `.specs/[feature-slug]/IMPLEMENTATION-PLAN.md`
+- Look for implementation state at `.specs/[feature-slug]/IMPLEMENTATION-STATE.md`
 
 If the user specifies a feature slug or path, use that. If not, ask using AskUserQuestion.
 
@@ -56,6 +57,23 @@ If the user specifies a feature slug or path, use that. If not, ask using AskUse
 
 The research phase must be quick and focused — read only what is relevant to the task at hand. Do not do a broad codebase survey.
 
+**IMPLEMENTATION-STATE.md**: This file tracks which phases and tasks have been completed. If it does not exist, create it at `.specs/[feature-slug]/IMPLEMENTATION-STATE.md` by deriving its initial state from the implementation plan (all tasks `pending`). Format:
+
+```markdown
+# Implementation State: [feature-slug]
+
+## Phase 1 -- [Phase Title]
+- [ ] Task 1: [description]
+- [ ] Task 2: [description]
+
+## Phase 2 -- [Phase Title]
+- [ ] Task 1: [description]
+```
+
+Use `- [x]` for completed tasks. Mark a fully completed phase by adding `**Status: completed**` below its heading.
+
+When the user asks to implement the "next phase", read `IMPLEMENTATION-STATE.md` to determine which phase to execute — the first phase without `**Status: completed**`.
+
 After reading artifacts (or completing the research phase), extract:
 
 - **Scope**: What needs to be built for this task
@@ -64,43 +82,13 @@ After reading artifacts (or completing the research phase), extract:
 - **Acceptance criteria**: How to verify the work is correct
 - **Phase**: Which phase from the implementation plan to implement (if a plan exists)
 
-If the task scope is ambiguous (e.g., "implement the feature" when the implementation plan has 4 phases), ask the user to clarify which phase or subset of requirements to tackle.
+If the task scope is ambiguous (e.g., "implement the feature" when the implementation plan has multiple phases and `IMPLEMENTATION-STATE.md` does not identify a clear next phase), ask the user to clarify.
 
-Present a brief summary of your understanding to the user before proceeding:
-
-```
-Implementing: [task description]
-Phase: [N, if applicable — omit if no implementation plan]
-Requirements: [list of requirement IDs from PRD, or derived scope if no PRD]
-Approach: [1-2 sentences from technical design, or derived from codebase if no design]
-Constraints: [key constraints]
-Artifacts: [PRD / Technical Design / Implementation Plan — list which were found, or "Derived from codebase" if none]
-```
-
-Wait for user confirmation before moving to Step 2.
-
-### Step 2 -- Break the Phase into Tasks
-
-Each implementation plan phase is already a vertical slice. Do not re-slice it. Instead, if the phase contains multiple distinct behaviors, break it into ordered tasks. Each task should be completable in a single TDD cycle (Red-Green-Refactor).
-
-If the phase is small enough for a single TDD cycle, skip the breakdown and move directly to Step 3.
-
-When a breakdown is needed, present the task list to the user:
-
-```
-Task 1: [behavior description]
-Task 2: [behavior description]
-Task 3: [behavior description]
-...
-```
-
-Wait for user confirmation before starting execution.
-
-### Step 3 -- Execute (Red-Green-Refactor)
+### Step 2 -- Execute (Red-Green-Refactor)
 
 For each task, follow this cycle strictly:
 
-#### 3a. Red -- Write a Failing Test
+#### 2a. Red
 
 - Write one test that captures the expected behavior for this task
 - Run the test suite and confirm the new test fails
@@ -108,14 +96,14 @@ For each task, follow this cycle strictly:
 
 **Important**: Run the tests. Do not assume the result. The Red step is only complete when you have observed the failure.
 
-#### 3b. Green -- Minimal Implementation
+#### 2b. Green
 
 - Write the minimum code necessary to make the failing test pass
 - Run the full test suite (not just the new test)
 - If any test fails, fix the implementation before proceeding
 - Do not add code beyond what the test requires
 
-#### 3c. Refactor
+#### 2c. Refactor
 
 - With all tests green, look for improvements:
   - Remove duplication introduced by the new code
@@ -124,17 +112,11 @@ For each task, follow this cycle strictly:
 - Run the full test suite after each refactor change
 - If any test breaks during refactor, revert the refactor change and try a different approach
 
-#### 3d. Move to Next Task
+#### 2d. Move to Next Task
 
-After completing one task, briefly state what was done and move to the next. Do not wait for user input between tasks unless something unexpected arises (ambiguity, a design decision not covered by the technical design, a conflict with existing code).
+After completing one task, mark it as `- [x]` in `IMPLEMENTATION-STATE.md`, briefly state what was done, and move to the next. If you encounter unknowns or ambiguities, note them and continue — surface them all at the end in Step 4.
 
-**When to pause and ask**:
-- A requirement is ambiguous and multiple interpretations are valid
-- The technical design does not account for a discovered constraint
-- Existing code conflicts with the planned approach
-- A dependency is missing or unavailable
-
-### Step 4 -- Review and Validate
+### Step 3 -- Review and Validate
 
 After all tasks are complete:
 
@@ -145,32 +127,15 @@ After all tasks are complete:
 
 These checks are independent -- run them in parallel when possible.
 
-If any verification fails, return to Step 3 and address the gap.
+If any verification fails, return to Step 2 and address the gap.
 
-### Step 5 -- Summarize and Request Feedback
+### Step 4 -- Summarize and Commit
 
-Briefly summarize what was implemented, any decisions made that were not covered by the artifacts, and open questions if any. Keep it short -- the code and tests speak for themselves.
+Mark the completed phase as `**Status: completed**` in `IMPLEMENTATION-STATE.md`.
 
-Wait for user feedback. If the user requests changes, return to Step 3 for the affected tasks.
+Briefly summarize what was implemented. Include any decisions made that were not covered by the artifacts and any unknowns or ambiguities encountered during execution.
 
-### Step 6 -- Iterate
-
-When the user provides feedback:
-
-1. Identify which tasks are affected
-2. Update or add tests to reflect the new expectations (Red)
-3. Update the implementation (Green)
-4. Refactor if needed
-5. Run the full validation cycle (Step 4)
-6. Present an updated summary (Step 5)
-
-Repeat until the user is satisfied.
-
-### Step 7 -- Commit (Manual Gate)
-
-**Never commit automatically.** When the user is satisfied with the implementation:
-
-1. Propose a commit message following the project's conventions:
+Commit automatically using the project's conventions:
 
 ```
 [type]: [concise description]
@@ -178,22 +143,15 @@ Repeat until the user is satisfied.
 [Body briefly explaining what changed and why]
 ```
 
-2. List the files that will be staged
-3. Wait for explicit user confirmation before committing
-
-If the user asks for changes to the commit message, adjust and re-present. Only commit when the user explicitly approves.
-
 ## When to Stop and Ask
 
-Pause execution and ask the user when:
+Stop mid-execution only when proceeding is impossible without an answer:
 
-- **Ambiguous scope**: The task could reasonably be interpreted multiple ways
-- **Design gap**: The technical design does not cover a situation encountered during implementation
-- **Conflicting requirements**: Two requirements contradict each other
-- **Missing dependency**: A package, service, or tool needed for implementation is not available
-- **Significant deviation**: The implementation needs to differ materially from the technical design
+- **Ambiguous scope**: The task could reasonably be interpreted multiple ways and both paths produce materially different code
+- **Missing dependency**: A package, service, or tool needed for implementation is not available and cannot be substituted
+- **Blocking conflict**: Existing code makes the planned approach entirely unworkable
 
-Do not invent answers to these situations. Surface them and let the user decide.
+For everything else — design gaps, minor ambiguities, non-blocking questions — note the unknown and continue. Surface all collected unknowns in Step 4.
 
 ## Common Mistakes
 
@@ -210,8 +168,8 @@ Right: Three separate tasks -- one for registration, one for validation, one for
 **Refactoring while tests are red.**
 Never refactor when a test is failing. Get to Green first, then refactor.
 
-**Committing without explicit approval.**
-This skill never commits automatically. Always present the proposed commit and wait.
+**Waiting to commit.**
+This skill commits automatically after verification passes. Do not ask for approval before committing.
 
 **Over-implementing beyond what the test demands.**
 In the Green step, write only the code the failing test requires. Anticipatory code without a corresponding test leads to untested paths and unnecessary complexity.
