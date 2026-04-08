@@ -38,12 +38,14 @@ These are guidelines, not rules. Use your judgment about what to hold, what to s
 
 ### Step 1 -- Understand the Context
 
+**Check recent git history first.** Run `git log -5 --oneline` to see the last 5 commits. This tells you what has already landed and where the work left off, so you do not duplicate or skip completed work.
+
 Locate and read available artifacts:
 
-- Look for PRD at `.specs/[feature-slug]/PRD.md`
-- Look for technical design at `.specs/[feature-slug]/TECHNICAL-DESIGN.md`
-- Look for implementation plan at `.specs/[feature-slug]/IMPLEMENTATION-PLAN.md`
-- Look for implementation state at `.specs/[feature-slug]/IMPLEMENTATION-STATE.md`
+- Look for implementation plan at `.specs/[feature-slug]/IMPLEMENTATION-PLAN.md` to understand the intended phases and tasks. This is your primary source for what to implement.
+- Look for implementation state at `.specs/[feature-slug]/IMPLEMENTATION-STATE.md` to see which phases and tasks have already been completed. This guides your phase selection.
+- Look for technical design at `.specs/[feature-slug]/TECHNICAL-DESIGN.md` to understand architectural decisions, API contracts, data flow, and other technical details.
+- Look for PRD at `.specs/[feature-slug]/PRD.md` to understand the requirements, user stories, acceptance criteria, and constraints.
 
 If the user specifies a feature slug or path, use that. If not, ask using AskUserQuestion.
 
@@ -72,7 +74,7 @@ The research phase must be quick and focused — read only what is relevant to t
 
 Use `- [x]` for completed tasks. Mark a fully completed phase by adding `**Status: completed**` below its heading.
 
-When the user asks to implement the "next phase", read `IMPLEMENTATION-STATE.md` to determine which phase to execute — the first phase without `**Status: completed**`.
+**Phase selection**: Always implement exactly one phase per invocation. Read `IMPLEMENTATION-STATE.md` and select the first phase that does not have `**Status: completed**`. If the user explicitly names a different phase, use that instead — but still implement only that one phase. Do not continue into subsequent phases after the selected phase is complete.
 
 After reading artifacts (or completing the research phase), extract:
 
@@ -173,3 +175,6 @@ This skill commits automatically after verification passes. Do not ask for appro
 
 **Over-implementing beyond what the test demands.**
 In the Green step, write only the code the failing test requires. Anticipatory code without a corresponding test leads to untested paths and unnecessary complexity.
+
+**Implementing multiple phases in one go.**
+Always implement one phase at a time. Do not continue to the subsequent phases.
