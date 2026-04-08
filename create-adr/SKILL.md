@@ -1,6 +1,6 @@
 ---
 name: create-adr
-description: Creates Architecture Decision Records (ADRs) to document significant architectural choices and their rationale for future team members. Use when the user says "create an ADR", "write an ADR", "create an ADR for X", "document a decision", "record why we chose X", or wants to capture the reasoning behind a technical choice so the team understands it later. Do NOT use for design doc, RFC, or PRD docs.
+description: Creates Architecture Decision Records (ADRs) to document significant architectural choices and their rationale for future team members. Use when the user says "create an ADR", "write an ADR", "create an ADR for X", "document a decision", "record why we chose X", or wants to capture the reasoning behind a technical choice so the team understands it later. Do NOT use for technical design, implementation plan, RFC, or PRD docs.
 ---
 
 # ADR Creator
@@ -21,7 +21,7 @@ Do NOT use for:
 
 - Defining what needs to be done - use `create-prd` for product requirements
 - Decisions not yet made — use `create-rfc` to drive the decision process first
-- Implementation planning after the decision — use `create-design-doc` for technical design documents
+- Implementation planning after the decision — use `create-technical-design` for architecture and `create-implementation-plan` for execution phases
 - Simple configuration choices or trivial code decisions
 - Meeting notes or general documentation
 
@@ -49,17 +49,17 @@ Use ADR when you need to **record why a decision was made**. Use PRD when you ne
 
 Use ADR when you need to **record the rationale of a decision** for future reference. Use RFC when you need to **propose and align on a decision**.
 
-## ADR vs Design Doc
+## ADR vs Technical Design
 
-| Aspect | ADR | Design Doc |
-|--------|-----|-----|
-| **Purpose** | Record a finalized architectural decision | Design + plan implementation |
+| Aspect | ADR | Technical Design |
+|--------|-----|-----------------|
+| **Purpose** | Record a finalized architectural decision | Document architecture, components, and API contracts |
 | **Audience** | Future engineers, architects | Engineers implementing the solution |
-| **Focus** | Why did we choose X over Y? | How do we build X? |
-| **Output** | Decision + consequences | Architecture + implementation plan |
-| **Timing** | After a significant decision is made | During implementation planning |
+| **Focus** | Why did we choose X over Y? | How is the system structured? |
+| **Output** | Decision + consequences | Architecture + data models + API contracts |
+| **Timing** | After a significant decision is made | Before implementation begins |
 
-Use ADR when you need to **record why a decision was made**. Use a design doc when you need to document **how to implement** the solution.
+Use ADR when you need to **record why a decision was made**. Use a technical design when you need to document **how the system is structured**.
 
 ## ADR Format Selection
 

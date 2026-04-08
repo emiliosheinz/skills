@@ -1,23 +1,23 @@
 ---
 name: create-prd
-description: Creates structured, explicit, and detailed Product Requirement Documents (PRDs). Use when the user says "create a PRD", "write a PRD", "create a PRD for X", "define the requirements for X", "write product requirements", or wants to plan what to build before implementation begins. Do NOT use for design doc, RFC, or ADR docs.
+description: Creates structured, explicit, and detailed Product Requirement Documents (PRDs). Use when the user says "create a PRD", "write a PRD", "create a PRD for X", "define the requirements for X", "write product requirements", or wants to plan what to build before implementation begins. Do NOT use for technical design, implementation plan, RFC, or ADR docs.
 ---
 
 # PRD Creator 
 
 **Goal:** produce a PRD that is precise, self-contained, and unambiguous. A reader should know exactly what to build and why without asking follow-up questions.
 
-## PRD vs Design Doc
+## PRD vs Technical Design
 
-| Aspect | PRD | Design Doc |
-|--------|-----|-----|
-| **Purpose** | Define what to build and why | Design + plan implementation |
+| Aspect | PRD | Technical Design |
+|--------|-----|-----------------|
+| **Purpose** | Define what to build and why | Document architecture and system structure |
 | **Audience** | Product team, engineering team | Engineering team |
-| **Focus** | What are we building, for whom, and why? | How do we build X? |
-| **Output** | Feature requirements, user stories | Architecture + implementation plan |
+| **Focus** | What are we building, for whom, and why? | How is the system structured? |
+| **Output** | Feature requirements, user stories | Architecture + data models + API contracts |
 | **Timing** | Before implementation, during planning | After requirements are defined |
 
-Use PRD when you need to **define the product requirements**. Use a design doc when you need to document the **technical approach**.
+Use PRD when you need to **define the product requirements**. Use a technical design when you need to document the **architecture and technical approach**.
 
 ## PRD vs RFC
 
