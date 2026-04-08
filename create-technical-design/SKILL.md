@@ -20,15 +20,12 @@ Before adding any detail, ask: "If we change frameworks or libraries, does this 
 
 The technical design must survive implementation changes. If the team migrates ORMs or rewrites a service, the design doc should remain valid.
 
-## Skill Routing
+## Routing
 
-| Signal | Skill |
-|--------|-------|
-| Define what to build and why | `/create-prd` |
-| Debate and decide between options | `/create-rfc` |
-| Record why a decision was made | `/create-adr` |
-| Architecture, components, APIs, data models | **This skill** |
-| Phases, tasks, sequencing, milestones | `/create-implementation-plan` |
+- Define requirements → `/create-prd`
+- Debate and decide options → `/create-rfc`
+- Record a finalized decision → `/create-adr`
+- Plan execution phases → `/create-implementation-plan`
 
 ## Document Sections
 

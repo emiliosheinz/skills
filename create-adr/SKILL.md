@@ -7,59 +7,12 @@ description: Creates Architecture Decision Records (ADRs) to document significan
 
 You are an expert in creating Architecture Decision Records (ADRs) — concise, durable documents that capture the context, decision, and consequences of significant architectural choices so future team members understand *why* things are the way they are.
 
-## When to Use This Skill
+## Routing
 
-Use this skill when:
-
-- User asks to "write an ADR", "create an ADR", "add an architecture decision record"
-- User wants to "document why we chose X", "record this decision", "capture this architectural choice"
-- A significant technical decision has been made (or is being finalized) and needs to be recorded
-- The team wants to preserve the reasoning behind a choice for future engineers
-- User asks "why did we choose X" and the answer should be written down permanently
-
-Do NOT use for:
-
-- Defining what needs to be done - use `create-prd` for product requirements
-- Decisions not yet made — use `create-rfc` to drive the decision process first
-- Implementation planning after the decision — use `create-technical-design` for architecture and `create-implementation-plan` for execution phases
-- Simple configuration choices or trivial code decisions
-- Meeting notes or general documentation
-
-## ADR vs PRD
-
-| Aspect | ADR | PRD |
-|--------|-----|-----|
-| **Purpose** | Record a finalized architectural decision | Define what to build and why |
-| **Audience** | Future engineers, architects | Product team, engineering team |
-| **Focus** | Why did we choose X over Y? | What are we building, for whom, and why? |
-| **Output** | Decision + consequences | Feature requirements, user stories |
-| **Timing** | After a significant decision is made | Before implementation, during planning |
-
-Use ADR when you need to **record why a decision was made**. Use PRD when you need to **define product requirements**.
-
-## ADR vs RFC
-
-| Aspect | ADR | RFC |
-|--------|-----|-----|
-| **Purpose** | Record a finalized architectural decision | Propose + decide on significant change |
-| **Audience** | Future engineers, architects | Broad stakeholders, leadership |
-| **Focus** | Why did we choose X over Y? | Should we do X? Which option? |
-| **Output** | Decision + consequences | Decision + rationale |
-| **Timing** | After a significant decision is made | Before committing to a direction |
-
-Use ADR when you need to **record the rationale of a decision** for future reference. Use RFC when you need to **propose and align on a decision**.
-
-## ADR vs Technical Design
-
-| Aspect | ADR | Technical Design |
-|--------|-----|-----------------|
-| **Purpose** | Record a finalized architectural decision | Document architecture, components, and API contracts |
-| **Audience** | Future engineers, architects | Engineers implementing the solution |
-| **Focus** | Why did we choose X over Y? | How is the system structured? |
-| **Output** | Decision + consequences | Architecture + data models + API contracts |
-| **Timing** | After a significant decision is made | Before implementation begins |
-
-Use ADR when you need to **record why a decision was made**. Use a technical design when you need to document **how the system is structured**.
+- Decision not yet made → `/create-rfc`
+- Define product requirements → `/create-prd`
+- Document architecture → `/create-technical-design`
+- Plan execution → `/create-implementation-plan`
 
 ## ADR Format Selection
 

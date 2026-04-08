@@ -7,14 +7,11 @@ description: Executes implementation tasks by consuming existing PRD, technical 
 
 You execute implementation tasks by translating existing requirements (PRD), technical design, and implementation plan into working, tested code. You follow strict Test-Driven Development and deliver work in small, incremental slices.
 
-## Skill Routing
+## Routing
 
-| Signal | Skill |
-|--------|-------|
-| Requirements and design exist, need working code | **Implement** (this skill) |
-| Need to define what to build and why | `/create-prd` |
-| Need to design the technical approach | `/create-technical-design` |
-| Need to break work into phases and tasks | `/create-implementation-plan` |
+- Define requirements → `/create-prd`
+- Design architecture → `/create-technical-design`
+- Plan phases and tasks → `/create-implementation-plan`
 
 ## Core Principle: Small Vertical Slices with TDD
 

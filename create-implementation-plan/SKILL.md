@@ -35,14 +35,11 @@ Each phase must define:
 - **Phase 4**: Edge cases, advanced features, performance — production hardening
 - **Phase N (Final)**: Phased rollout, monitoring verification, documentation — production readiness
 
-## Skill Routing
+## Routing
 
-| Signal | Skill |
-|--------|-------|
-| Define what to build and why | `/create-prd` |
-| Define architecture, components, APIs | `/create-technical-design` |
-| Phases, tasks, sequencing, milestones | **This skill** |
-| Turn plans into working code | `/implement` |
+- Define requirements → `/create-prd`
+- Design architecture → `/create-technical-design`
+- Write the code → `/implement`
 
 ## Process
 

@@ -7,60 +7,12 @@ description: Creates structured Request for Comments (RFC) documents for proposi
 
 You are an expert in creating Request for Comments (RFC) documents that clearly communicate proposals, capture alternatives considered, and drive structured decision-making across teams.
 
-## When to Use This Skill
+## Routing
 
-Use this skill when:
-
-- User asks to "write an RFC", "create an RFC", "draft a proposal", or "write a request for comments"
-- User needs to propose a significant change and gather stakeholder feedback
-- A major architectural, process, or product decision needs to be documented before acting
-- User wants to align multiple teams or approvers before committing to a direction
-- User asks to "document a decision" or "get buy-in" on a proposal
-- User needs to compare options and record the chosen direction with rationale
-
-Do NOT use for:
-- Technical design and architecture (use `create-technical-design` instead)
-- Implementation planning and phased execution (use `create-implementation-plan` instead)
-- Architecture Decision Records focused on architectural choices (use `create-adr` instead)
-- Product Requirement Documents focused on feature specs (use `create-prd` instead)
-- Simple meeting notes or summaries
-- README files or API documentation
-
-## RFC vs Technical Design
-
-| Aspect | RFC | Technical Design |
-|--------|-----|-----------------|
-| **Purpose** | Propose + decide on significant change | Document architecture and system structure |
-| **Audience** | Broad stakeholders, leadership | Engineering team |
-| **Focus** | Should we do X? Which option? | How is the system structured? |
-| **Output** | Decision + rationale | Architecture + data models + API contracts |
-| **Timing** | Before committing to a direction | After direction is decided |
-
-Use RFC when the **decision itself** needs alignment. Use a technical design when the decision is made and you need to document the **architecture and structure**.
-
-## RFC vs ADR
-
-| Aspect | RFC | ADR |
-|--------|-----|-----|
-| **Purpose** | Propose + decide on significant change | Record a finalized architectural decision |
-| **Audience** | Broad stakeholders, leadership | Future engineers, architects |
-| **Focus** | Should we do X? Which option? | Why did we choose X over Y? |
-| **Output** | Decision + rationale | Decision + consequences |
-| **Timing** | Before committing to a direction | After a significant decision is made |
-
-Use RFC when you need to **propose and align on a decision**. Use ADR when you need to **record the rationale of a decision** for future reference.
-
-## RFC vs PRD
-
-| Aspect | RFC | PRD |
-|--------|-----|-----|
-| **Purpose** | Propose + decide on significant change | Define what to build and why |
-| **Audience** | Broad stakeholders, leadership | Product team, engineering team |
-| **Focus** | Should we do X? Which option? | What are we building, for whom, and why? |
-| **Output** | Decision + rationale | Feature requirements, user stories |
-| **Timing** | Before committing to a direction | After direction is decided |
-
-Use RFC when you need to **propose and align on a decision**. Use PRD when you need to **define what to build and why** after the decision is made.
+- Decision already made, need to record it → `/create-adr`
+- Define product requirements → `/create-prd`
+- Document architecture → `/create-technical-design`
+- Plan execution → `/create-implementation-plan`
 
 ## Process
 
