@@ -1,6 +1,6 @@
 ---
 name: implement
-description: Executes implementation tasks by consuming existing PRD, technical design, and implementation plan artifacts. Use when the user says "implement this", "implement phase N", "build this feature", "start implementing", "execute the plan", or wants to turn requirements and design documents into working code using TDD (Red-Green-Refactor). Do NOT use for creating PRDs, technical designs, implementation plans, RFCs, or ADRs.
+description: Executes implementation by consuming existing PRD, technical design, and implementation plan artifacts. Use when the user says "implement this", "implement phase N", "build this feature", "start implementing", "execute the plan", or wants to turn requirements and design documents into working code using TDD (Red-Green-Refactor). Do NOT use for creating PRDs, technical designs, implementation plans, RFCs, or ADRs.
 ---
 
 # Implementation Executor
@@ -175,7 +175,7 @@ Repeat until the user is satisfied.
 ```
 [type]: [concise description]
 
-[Body explaining what changed and why, referencing requirement IDs if applicable]
+[Body briefly explaining what changed and why]
 ```
 
 2. List the files that will be staged
