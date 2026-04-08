@@ -46,17 +46,17 @@ Each phase must define:
 
 ## Process
 
-### Step 1: Check for Technical Design
+### Step 1: Locate Upstream Artifacts
 
-Ask the user:
-- Does a technical design document already exist?
-- If yes, request it or the file path (e.g. `.specs/[feature-slug]/TECHNICAL-DESIGN.md`), then read it.
+Check `.specs/[feature-slug]/` for existing documents. If the feature slug is not yet known, ask for the feature name first and derive the slug.
 
-If a technical design is provided, use it as the source of truth for architecture, components, APIs, and constraints. Reference it explicitly throughout the plan. Do not re-derive architectural decisions — cite the design.
+- **Technical design found** (`.specs/[feature-slug]/TECHNICAL-DESIGN.md`): Read it. Use it as the source of truth for architecture, components, APIs, and constraints. Reference it explicitly throughout the plan. Do not re-derive architectural decisions — cite the design.
+- **PRD found but no technical design** (`.specs/[feature-slug]/PRD.md`): Read it. Then do a quick research phase: scan the relevant codebase to understand existing patterns, integration points, and constraints well enough to derive the architectural context needed for the plan.
+- **Neither found**: Do a quick research phase — scan the codebase for existing patterns, identify relevant entry points and integration boundaries, and derive scope, approach, and constraints from the task description and code. Keep this focused and efficient; the goal is just enough context to write a solid plan.
 
 ### Step 2: Gather Context
 
-Ask for:
+Ask for (skip anything already answered by upstream artifacts):
 - Project/feature name and team members
 - Target timeline or milestone dates
 - Any known constraints (hard deadlines, team availability, external dependencies)

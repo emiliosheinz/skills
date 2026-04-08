@@ -41,7 +41,7 @@ These are guidelines, not rules. Use your judgment about what to hold, what to s
 
 ### Step 1 -- Understand the Context
 
-Locate and read the relevant artifacts:
+Locate and read available artifacts:
 
 - Look for PRD at `.specs/[feature-slug]/PRD.md`
 - Look for technical design at `.specs/[feature-slug]/TECHNICAL-DESIGN.md`
@@ -49,20 +49,23 @@ Locate and read the relevant artifacts:
 
 If the user specifies a feature slug or path, use that. If not, ask using AskUserQuestion.
 
-If required artifacts are missing, do not proceed. Instead, tell the user which artifact is missing and route them to the appropriate skill:
+**If artifacts are missing**, do not stop. Instead, perform a quick research phase to derive what you need:
 
-- Missing PRD: "No PRD found. Use `/create-prd` to define the requirements first."
-- Missing technical design: "No technical design found. Use `/create-technical-design` to define the architecture first."
-- Missing implementation plan: "No implementation plan found. Use `/create-implementation-plan` to define phases and tasks first."
-- Missing all: "No artifacts found. Start with `/create-prd`, then `/create-technical-design`, then `/create-implementation-plan`."
+- **Scan the codebase**: identify existing patterns, conventions, test setup, and relevant entry points
+- **Derive scope**: from the user's task description and any code or partial artifacts that exist
+- **Derive architecture**: from how the existing codebase is structured — frameworks in use, data flow, naming conventions
+- **Derive constraints**: from existing tests, linter config, and code patterns
+- **Derive acceptance criteria**: from the task description; make them explicit before proceeding
 
-After reading the artifacts, extract:
+The research phase must be quick and focused — read only what is relevant to the task at hand. Do not do a broad codebase survey.
 
-- **Scope**: What requirements (from PRD) are in play for this task
-- **Architecture**: What technical approach (from technical design) applies
-- **Constraints**: Hard limits from the artifacts
+After reading artifacts (or completing the research phase), extract:
+
+- **Scope**: What needs to be built for this task
+- **Architecture**: What technical approach applies
+- **Constraints**: Hard limits from artifacts or codebase patterns
 - **Acceptance criteria**: How to verify the work is correct
-- **Phase**: Which phase from the implementation plan to implement
+- **Phase**: Which phase from the implementation plan to implement (if a plan exists)
 
 If the task scope is ambiguous (e.g., "implement the feature" when the implementation plan has 4 phases), ask the user to clarify which phase or subset of requirements to tackle.
 
@@ -70,10 +73,11 @@ Present a brief summary of your understanding to the user before proceeding:
 
 ```
 Implementing: [task description]
-Phase: [N, if applicable]
-Requirements: [list of requirement IDs from PRD]
-Approach: [1-2 sentences from technical design]
+Phase: [N, if applicable — omit if no implementation plan]
+Requirements: [list of requirement IDs from PRD, or derived scope if no PRD]
+Approach: [1-2 sentences from technical design, or derived from codebase if no design]
 Constraints: [key constraints]
+Artifacts: [PRD / Technical Design / Implementation Plan — list which were found, or "Derived from codebase" if none]
 ```
 
 Wait for user confirmation before moving to Step 2.
@@ -139,8 +143,8 @@ After all tasks are complete:
 
 1. **Run the full test suite** -- all tests must pass
 2. **Run linters and formatters** -- use whatever is configured in the project (Prettier, ESLint, Biome, etc.). Fix any issues.
-3. **Verify against PRD** -- check each requirement that was in scope. Confirm the implementation satisfies it.
-4. **Verify against technical design** -- confirm the implementation follows the architectural decisions and contracts defined in the technical design.
+3. **Verify against requirements** -- check each requirement or derived scope item. Confirm the implementation satisfies it. Use the PRD if one exists; otherwise use the acceptance criteria derived in Step 1.
+4. **Verify against architecture** -- confirm the implementation follows the architectural decisions and code patterns. Use the technical design if one exists; otherwise verify consistency with the existing codebase patterns derived in Step 1.
 
 These checks are independent -- run them in parallel when possible.
 
@@ -196,8 +200,8 @@ Do not invent answers to these situations. Surface them and let the user decide.
 
 ## Common Mistakes
 
-**Implementing without reading the artifacts first.**
-The PRD, technical design, and implementation plan exist for a reason. Read them before writing any code. Do not rely on the user's verbal summary alone.
+**Implementing without establishing context first.**
+Always read available artifacts (PRD, technical design, implementation plan) before writing code. If no artifacts exist, do a quick research phase to understand the codebase. Do not rely solely on the user's verbal description — read the code.
 
 **Writing tests after the implementation.**
 This is not TDD. Always write the test first, confirm it fails, then implement. Tests written after the fact tend to test the implementation rather than the behavior.

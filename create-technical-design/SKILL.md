@@ -74,33 +74,40 @@ After mandatory and critical sections, offer these. Skip most for small/simple p
 
 ## Process
 
-### Step 1: Gather Context
+### Step 1: Check for Upstream Artifacts
+
+Before gathering context, look for an existing PRD at `.specs/[feature-slug]/PRD.md`. If the feature slug is not yet known, ask for the feature name first and derive the slug.
+
+- **PRD found**: Read it. Use it as the source of truth for requirements, scope, and problem statement. Skip asking for information already covered by the PRD.
+- **PRD not found**: Proceed to gather context directly in Step 2.
+
+### Step 2: Gather Context
 
 Ask for:
-- Project/feature name
+- Project/feature name (if not already known from Step 1)
 - Project type (new feature, integration, refactor/migration, etc.)
-- Whether a clear problem statement exists or needs defining
+- Whether a clear problem statement exists or needs defining (skip if PRD was found)
 
-### Step 2: Collect Mandatory Information
+### Step 3: Collect Mandatory Information
 
-Ensure you have enough to write all mandatory sections. Ask for anything missing:
+Ensure you have enough to write all mandatory sections. Ask for anything missing (skip fields already answered by the PRD):
 - Tech lead and team members
 - Problem with impact (what, why, quantified consequences)
 - In-scope and out-of-scope items (min 3 each)
 - High-level solution approach
 - At least 3 risks
 
-### Step 3: Determine Critical Sections
+### Step 4: Determine Critical Sections
 
 Based on project type, identify required critical sections:
 - Payment/auth/PII projects: Security is mandatory
 - Production systems: Monitoring is mandatory
 
-### Step 4: Offer Suggested Sections
+### Step 5: Offer Suggested Sections
 
 Based on project size, offer relevant suggested sections. Ask: "Would you like to include any of these sections?"
 
-### Step 5: Generate and Validate
+### Step 6: Generate and Validate
 
 **File location**: `.specs/[feature-slug]/TECHNICAL-DESIGN.md` — derive the slug from the feature name (lowercase, hyphen-separated). Create the directory if it does not exist.
 

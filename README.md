@@ -41,24 +41,57 @@ npx skills add emiliosheinz/agent-skills --global
 
 ## Document Workflow
 
-The document skills map to different stages of the decision-to-implementation pipeline:
+Skills map to different stages of the decision-to-implementation pipeline. Every skill can be used standalone — when upstream artifacts are missing, it performs a quick research phase to derive the context it needs.
 
+### Full pipeline
+
+```mermaid
+flowchart TB
+    subgraph main["Main Flow"]
+        direction LR
+        PRD["create-prd"] --> TD["create-technical-design"] --> IP["create-implementation-plan"] --> IMP["implement"]
+    end
+
+    subgraph lateral["Use at any point"]
+        direction LR
+        RFC["create-rfc"]
+        ADR["create-adr"]
+    end
 ```
-PRD ──→ RFC ──→ ADR ──→ Technical Design ──→ Implementation Plan ──→ Implement
-What & Why    Which option?    Record decision    How it's structured    How to execute    Build it
+
+RFC and ADR are not tied to any specific stage — use them whenever a significant decision needs alignment or recording.
+
+### Flexible entry points
+
+You do not have to start at the beginning. Jump in at whichever stage fits the task:
+
+```mermaid
+flowchart LR
+    PRD["create-prd"]
+    TD["create-technical-design"]
+    IP["create-implementation-plan"]
+    IMP["implement"]
+
+    PRD -->|"full flow"| TD --> IP --> IMP
+    PRD -->|"skip design"| IP
+    TD -->|"skip planning"| IMP
+    IP -->|"skip to code"| IMP
 ```
 
-| Stage | Skill | Question It Answers | When to Use |
-|-------|-------|---------------------|-------------|
-| 1. Requirements | `create-prd` | What are we building, for whom, and why? | Kicking off a new feature or initiative |
-| 2. Decision | `create-rfc` | Should we do X or Y? Which approach? | Multiple viable options exist and stakeholders need to align |
-| 3. Record | `create-adr` | Why did we choose X over Y? | After a significant architectural decision is made |
-| 4. Design | `create-technical-design` | What is the architecture, data model, and API contract? | Before planning execution, to align the engineering team |
-| 5. Plan | `create-implementation-plan` | How do we execute the work in phases? | After design is defined, to structure tasks and milestones |
+| Stage | Skill | Question It Answers | Upstream Input |
+|-------|-------|---------------------|----------------|
+| Requirements | `create-prd` | What are we building, for whom, and why? | None — gathered via interview |
+| Decision | `create-rfc` | Should we do X or Y? Which approach? | PRD (optional) |
+| Record | `create-adr` | Why did we choose X over Y? | RFC outcome (optional) |
+| Design | `create-technical-design` | What is the architecture, data model, and API contract? | PRD if available, otherwise gathers directly |
+| Plan | `create-implementation-plan` | How do we execute the work in phases? | Technical design or PRD if available, otherwise researches codebase |
+| Build | `implement` | Turn the plan into tested, working code | Any combination of above, or derives from codebase |
 
-Not every project needs all five stages. Common combinations:
+### Common combinations
 
-- **Small feature**: PRD + technical design + implementation plan
-- **Migration or large change**: RFC + ADR + technical design + implementation plan
-- **Architectural decision only**: RFC + ADR (no implementation planning needed yet)
-- **Full initiative**: PRD + RFC + ADR + technical design + implementation plan
+> `create-rfc` and `create-adr` can be invoked at any point when a significant decision needs to be proposed or recorded. They are not required for the main flow but are available whenever needed.
+
+- **Full process**: `create-prd` → `create-technical-design` → `create-implementation-plan` → `implement`
+- **Technical task, no product work**: `create-technical-design` → `create-implementation-plan` → `implement`
+- **Simple feature**: `create-implementation-plan` → `implement`
+- **Straightforward task**: `implement` directly

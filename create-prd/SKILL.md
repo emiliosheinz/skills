@@ -98,6 +98,17 @@ Present the draft. Ask:
 
 If the feedback surfaces new information, gaps, or contradictions, return to Step 1 and continue the interview before updating the draft. Repeat steps 1–3 until the PRD is complete and accurate.
 
+Once the PRD is finalized, offer the natural next step:
+
+```
+PRD created at .specs/[feature-slug]/PRD.md
+
+Suggested next steps:
+- Run /create-technical-design to define the architecture
+- Run /create-rfc if a significant decision still needs alignment
+- Run /create-implementation-plan to jump straight to execution planning (skips technical design)
+```
+
 ## PRD Template
 
 ```markdown
