@@ -144,8 +144,7 @@ Follow these steps when creating a design doc:
 
 Ask the user for:
 - Project/feature name
-- Project size (small: < 1 week, medium: 1-4 weeks, large: > 1 month)
-- Project type (new feature, integration, refactor/migration, infrastructure, payment/billing, auth)
+- Project type (new feature, improvement, integration, refactor/migration, etc.)
 - Whether they have a clear problem statement or need help defining one
 
 ### Step 2: Collect Mandatory Information
