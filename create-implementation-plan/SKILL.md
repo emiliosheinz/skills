@@ -16,6 +16,16 @@ Structure every plan as **vertical slices** following the **tracer bullet strate
 - Testing is embedded in each phase — never deferred to a standalone phase
 - No phase is purely "setup" or "infrastructure" without user-visible functionality
 
+### Task ID Convention
+
+Task IDs are derived from the feature slug and are unique across the entire plan. Format: `PREFIX-PN-NN`
+
+- `PREFIX` — feature slug uppercased and shortened to 3–5 characters (e.g. `user-onboarding` → `ONBD`, `payment-refunds` → `PAY`)
+- `PN` — phase number (e.g. `P1`, `P2`)
+- `NN` — sequential task number within the phase (e.g. `01`, `02`)
+
+Example: `ONBD-P1-01`, `ONBD-P1-02`, `ONBD-P2-01`
+
 ### Phase Structure
 
 Each phase must define:
@@ -115,10 +125,10 @@ Structured as vertical slices following tracer bullet strategy. Testing is embed
 
 **Tasks**:
 
-| Task | Owner | Estimate |
-|------|-------|----------|
-| [Task 1] | @Name | [estimate] |
-| [Task 2] | @Name | [estimate] |
+| ID | Task | Owner | Estimate |
+|----|------|-------|----------|
+| [PREFIX-P1-01] | [Task 1] | @Name | [estimate] |
+| [PREFIX-P1-02] | [Task 2] | @Name | [estimate] |
 
 **Testing**:
 
@@ -169,6 +179,7 @@ Critical sections (Testing Strategy, Rollback Plan) follow after Risks when appl
 - [ ] Technical design referenced (if one exists)
 - [ ] Phase 1 is a tracer bullet delivering end-to-end value
 - [ ] Every phase has goal, tasks, testing, acceptance criteria, and dependencies
+- [ ] All task IDs follow the `PREFIX-PN-NN` convention and are unique across the plan
 - [ ] Testing is embedded in each phase — no standalone test phase
 - [ ] No phase is purely setup or infrastructure without user-visible output
 - [ ] Milestones are defined with target dates
