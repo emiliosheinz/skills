@@ -1,6 +1,6 @@
-# create-tdd
+# create-design-doc
 
-An agent skill that guides the creation of Technical Design Documents (TDDs) to communicate architecture decisions, implementation plans, and risk assessments before implementation begins.
+An agent skill that guides the creation of design documents to communicate architecture decisions, implementation plans, and risk assessments before implementation begins.
 
 ## When to use
 
@@ -19,11 +19,11 @@ The skill runs a five-step process:
 2. **Collect mandatory information** — ensures tech lead, team, problem description, scope, solution approach, risks, and implementation plan are present before proceeding.
 3. **Determine critical sections** — based on project type, identifies required additional sections (security for payment/auth, monitoring and rollback for production systems, testing for all projects).
 4. **Offer suggested sections** — based on project size, offers optional sections like success metrics, alternatives considered, migration plan, and open questions.
-5. **Generate and validate** — produces a structured Markdown TDD, validates it against a checklist, and highlights any gaps.
+5. **Generate and validate** — produces a structured Markdown design doc, validates it against a checklist, and highlights any gaps.
 
 ## Output
 
-A Markdown TDD document written to `.specs/[feature-slug]/TDD.md` containing:
+A Markdown design doc written to `.specs/[feature-slug]/DESIGN.md` containing:
 
 - Header and metadata (tech lead, team, epic link, status, dates)
 - Context — background, domain, stakeholders
@@ -38,7 +38,7 @@ Critical and suggested sections are included based on project type and size.
 ## Usage
 
 ```
-/create-tdd
+/create-design-doc
 ```
 
-The agent begins gathering context immediately. Provide as much detail as possible about the project, the problem being solved, and the technical approach — the more context, the more useful the TDD will be to reviewers.
+The agent begins gathering context immediately. Provide as much detail as possible about the project, the problem being solved, and the technical approach — the more context, the more useful the design doc will be to reviewers.

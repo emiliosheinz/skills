@@ -1,15 +1,15 @@
 ---
-name: create-tdd
-description: Creates Technical Design Documents (TDD) through interactive discovery. Use when the user says "create a TDD", "write a TDD", "create a TDD for X", "write a design doc", "technical spec", "architecture document", or "design proposal". Do NOT use for PRD, RFC, or ADR docs.
+name: create-design-doc
+description: Creates design documents through interactive discovery. Use when the user says "create a design doc", "write a design doc", "create a design doc for X", "technical spec", "architecture document", or "design proposal". Do NOT use for PRD, RFC, or ADR docs.
 ---
 
-# TDD Creator
+# Design Doc Creator
 
-You create Technical Design Documents that communicate architecture decisions, implementation plans, and risk assessments. TDDs document **architectural decisions and contracts**, not implementation code.
+You create design documents that communicate architecture decisions, implementation plans, and risk assessments. Design docs document **architectural decisions and contracts**, not implementation code.
 
-## TDD vs PRD
+## Design Doc vs PRD
 
-| Aspect | TDD | PRD |
+| Aspect | Design Doc | PRD |
 |--------|-----|-----|
 | **Purpose** | Design + plan implementation | Define what to build and why |
 | **Audience** | Engineering team | Product team, engineering team |
@@ -17,11 +17,11 @@ You create Technical Design Documents that communicate architecture decisions, i
 | **Output** | Architecture + implementation plan | Feature requirements, user stories |
 | **Timing** | After requirements are defined | Before implementation, during planning |
 
-Use TDD when you need to document the **technical approach**. Use PRD when you need to **define the product requirements**.
+Use a design doc when you need to document the **technical approach**. Use PRD when you need to **define the product requirements**.
 
-## TDD vs RFC
+## Design Doc vs RFC
 
-| Aspect | TDD | RFC |
+| Aspect | Design Doc | RFC |
 |--------|-----|-----|
 | **Purpose** | Design + plan implementation | Propose + decide on significant change |
 | **Audience** | Engineering team | Broad stakeholders, leadership |
@@ -29,11 +29,11 @@ Use TDD when you need to document the **technical approach**. Use PRD when you n
 | **Output** | Architecture + implementation plan | Decision + rationale |
 | **Timing** | After direction is decided | Before committing to a direction |
 
-Use TDD when the decision is made and you need to document the **implementation approach**. Use RFC when the **decision itself** needs alignment.
+Use a design doc when the decision is made and you need to document the **implementation approach**. Use RFC when the **decision itself** needs alignment.
 
-## TDD vs ADR
+## Design Doc vs ADR
 
-| Aspect | TDD | ADR |
+| Aspect | Design Doc | ADR |
 |--------|-----|-----|
 | **Purpose** | Design + plan implementation | Record a finalized architectural decision |
 | **Audience** | Engineers implementing the solution | Future engineers, architects |
@@ -41,7 +41,7 @@ Use TDD when the decision is made and you need to document the **implementation 
 | **Output** | Architecture + implementation plan | Decision + consequences |
 | **Timing** | During implementation planning | After a significant decision is made |
 
-Use TDD when you need to document **how to implement**. Use ADR when you need to **record why a decision was made** for future reference.
+Use a design doc when you need to document **how to implement**. Use ADR when you need to **record why a decision was made** for future reference.
 
 ## Core Principle: Architecture Over Implementation
 
@@ -54,7 +54,7 @@ Before adding any detail, ask: "If we change frameworks, does this still apply?"
 
 **Exclude**: CLI commands, code snippets, framework-specific syntax, file paths, tool-specific configuration.
 
-The TDD must survive implementation changes. If the team migrates frameworks or ORMs, the TDD should remain valid.
+The design doc must survive implementation changes. If the team migrates frameworks or ORMs, the design doc should remain valid.
 
 ## Document Sections
 
@@ -138,7 +138,7 @@ Each phase includes its own testing. Never create a standalone "testing phase."
 
 ## Process
 
-Follow these steps when creating a TDD:
+Follow these steps when creating a design doc:
 
 ### Step 1: Gather Context
 
@@ -171,14 +171,14 @@ Based on project size, offer relevant suggested sections. Ask: "Would you like t
 
 ### Step 5: Generate and Validate
 
-**File location:** Write the TDD to `.specs/[feature-slug]/TDD.md`. Derive the slug from the feature name: lowercase, words separated by hyphens (e.g. `stripe-integration`, `user-onboarding`). Create the directory if it does not exist. This co-locates the TDD with related documents for the same initiative.
+**File location:** Write the design doc to `.specs/[feature-slug]/DESIGN.md`. Derive the slug from the feature name: lowercase, words separated by hyphens (e.g. `stripe-integration`, `user-onboarding`). Create the directory if it does not exist. This co-locates the design doc with related documents for the same initiative.
 
-Generate the TDD using the template below, then validate against the checklist. Highlight any gaps in a summary.
+Generate the design doc using the template below, then validate against the checklist. Highlight any gaps in a summary.
 
-## TDD Template
+## Design Doc Template
 
 ```markdown
-# TDD - [Project/Feature Name]
+# Design Doc - [Project/Feature Name]
 
 | Field        | Value                        |
 | ------------ | ---------------------------- |
@@ -324,10 +324,10 @@ Before finalizing, verify:
 
 ## Output Summary
 
-After generating the TDD, provide a summary:
+After generating the design doc, provide a summary:
 
 ```
-TDD Created: "[Project Name]"
+Design Doc Created: "[Project Name]"
 
 Sections Included:
 - Mandatory (N/7): [list]

@@ -1,6 +1,6 @@
 ---
 name: create-adr
-description: Creates Architecture Decision Records (ADRs) to document significant architectural choices and their rationale for future team members. Use when the user says "create an ADR", "write an ADR", "create an ADR for X", "document a decision", "record why we chose X", or wants to capture the reasoning behind a technical choice so the team understands it later. Do NOT use for TDD, RFC, or PRD docs.
+description: Creates Architecture Decision Records (ADRs) to document significant architectural choices and their rationale for future team members. Use when the user says "create an ADR", "write an ADR", "create an ADR for X", "document a decision", "record why we chose X", or wants to capture the reasoning behind a technical choice so the team understands it later. Do NOT use for design doc, RFC, or PRD docs.
 ---
 
 # ADR Creator
@@ -21,7 +21,7 @@ Do NOT use for:
 
 - Defining what needs to be done - use `create-prd` for product requirements
 - Decisions not yet made — use `create-rfc` to drive the decision process first
-- Implementation planning after the decision — use `create-tdd` for technical design documents
+- Implementation planning after the decision — use `create-design-doc` for technical design documents
 - Simple configuration choices or trivial code decisions
 - Meeting notes or general documentation
 
@@ -49,9 +49,9 @@ Use ADR when you need to **record why a decision was made**. Use PRD when you ne
 
 Use ADR when you need to **record the rationale of a decision** for future reference. Use RFC when you need to **propose and align on a decision**.
 
-## ADR vs TDD
+## ADR vs Design Doc
 
-| Aspect | ADR | TDD |
+| Aspect | ADR | Design Doc |
 |--------|-----|-----|
 | **Purpose** | Record a finalized architectural decision | Design + plan implementation |
 | **Audience** | Future engineers, architects | Engineers implementing the solution |
@@ -59,7 +59,7 @@ Use ADR when you need to **record the rationale of a decision** for future refer
 | **Output** | Decision + consequences | Architecture + implementation plan |
 | **Timing** | After a significant decision is made | During implementation planning |
 
-Use ADR when you need to **record why a decision was made**. Use TDD when you need to document **how to implement** the solution.
+Use ADR when you need to **record why a decision was made**. Use a design doc when you need to document **how to implement** the solution.
 
 ## ADR Format Selection
 
@@ -389,7 +389,7 @@ The rationale is *why this option and not the others* — not just what was chos
 ## Important Notes
 
 - **ADRs are immutable** — never edit the decision. Supersede with a new ADR.
-- **Short is better** — 200–500 words is ideal. If it needs to be longer, move detail to a linked TDD or RFC.
+- **Short is better** — 200–500 words is ideal. If it needs to be longer, move detail to a linked design doc or RFC.
 - **Context ages** — always date the ADR; what seems obvious now won't be in 3 years.
 - **Honest consequences** — a one-sided ADR loses credibility. Future engineers will hit the downsides regardless.
 - **Link everything** — related ADRs, the RFC that drove the decision, tickets, PR references.

@@ -1,6 +1,6 @@
 ---
 name: create-rfc
-description: Creates structured Request for Comments (RFC) documents for proposing and deciding on significant changes. Use when the user says "create an RFC", "write an RFC", "create an RFC for X", "create a proposal", "draft an RFC", or needs stakeholder alignment before making a major technical or process decision. Do NOT use for TDD, PRD, or ADR docs.
+description: Creates structured Request for Comments (RFC) documents for proposing and deciding on significant changes. Use when the user says "create an RFC", "write an RFC", "create an RFC for X", "create a proposal", "draft an RFC", or needs stakeholder alignment before making a major technical or process decision. Do NOT use for design doc, PRD, or ADR docs.
 ---
 
 # RFC Creator
@@ -19,15 +19,15 @@ Use this skill when:
 - User needs to compare options and record the chosen direction with rationale
 
 Do NOT use for:
-- Technical Design Documents focused on implementation (use `create-tdd` instead)
+- Technical Design Documents focused on implementation (use `create-design-doc` instead)
 - Architecture Decision Records focused on architectural choices (use `create-adr` instead)
 - Product Requirement Documents focused on feature specs (use `create-prd` instead)
 - Simple meeting notes or summaries
 - README files or API documentation
 
-## RFC vs TDD
+## RFC vs Design Doc
 
-| Aspect | RFC | TDD |
+| Aspect | RFC | Design Doc |
 |--------|-----|-----|
 | **Purpose** | Propose + decide on significant change | Design + plan implementation |
 | **Audience** | Broad stakeholders, leadership | Engineering team |
@@ -35,7 +35,7 @@ Do NOT use for:
 | **Output** | Decision + rationale | Architecture + implementation plan |
 | **Timing** | Before committing to a direction | After direction is decided |
 
-Use RFC when the **decision itself** needs alignment. Use TDD when the decision is made and you need to document the **implementation approach**.
+Use RFC when the **decision itself** needs alignment. Use a design doc when the decision is made and you need to document the **implementation approach**.
 
 ## RFC vs ADR
 
@@ -137,7 +137,7 @@ If any required fields are missing, request them using "AskUserQuestion" before 
 
 ### Step 4: Generate RFC Document
 
-**File location:** Write the RFC to `.specs/[feature-slug]/RFC.md`. Derive the slug from the proposal title: lowercase, words separated by hyphens (e.g. `migrate-to-postgresql`, `adopt-microservices`). Create the directory if it does not exist. This co-locates the RFC with related documents (PRD, TDD) for the same initiative.
+**File location:** Write the RFC to `.specs/[feature-slug]/RFC.md`. Derive the slug from the proposal title: lowercase, words separated by hyphens (e.g. `migrate-to-postgresql`, `adopt-microservices`). Create the directory if it does not exist. This co-locates the RFC with related documents (PRD, design doc) for the same initiative.
 
 Generate the RFC in Markdown following the templates below.
 
@@ -160,7 +160,7 @@ Suggested next steps:
 
 Would you like me to:
 1. Add more options to compare?
-2. Create a follow-up technical design doc (TDD) for implementation details?
+2. Create a follow-up design doc for implementation details?
 3. Publish this to Confluence?
 ```
 
@@ -287,7 +287,7 @@ Would you like me to add anything else?
 
 ## Important Notes
 
-- **RFC is for decisions, not implementation** — once the RFC is decided, create a TDD for the implementation plan
+- **RFC is for decisions, not implementation** — once the RFC is decided, create a design doc for the implementation plan
 - **Honest options are critical** — a one-sided RFC undermines trust and produces bad decisions
 - **"Do nothing" is always an option** — helps assess whether change is truly worth it
 - **Outcome section is filled after the fact** — leave as placeholder during drafting

@@ -1,11 +1,11 @@
 ---
 name: implement
-description: Executes implementation tasks by consuming existing PRD and TDD artifacts. Use when the user says "implement this", "implement phase N", "build this feature", "start implementing", "execute the plan", or wants to turn requirements and design documents into working code using TDD (Red-Green-Refactor). Do NOT use for creating PRDs, TDDs, RFCs, or ADRs.
+description: Executes implementation tasks by consuming existing PRD and design doc artifacts. Use when the user says "implement this", "implement phase N", "build this feature", "start implementing", "execute the plan", or wants to turn requirements and design documents into working code using TDD (Red-Green-Refactor). Do NOT use for creating PRDs, design docs, RFCs, or ADRs.
 ---
 
 # Implementation Executor
 
-You execute implementation tasks by translating existing requirements (PRD) and technical design (TDD) into working, tested code. You follow strict Test-Driven Development and deliver work in small, incremental slices.
+You execute implementation tasks by translating existing requirements (PRD) and technical design (design doc) into working, tested code. You follow strict Test-Driven Development and deliver work in small, incremental slices.
 
 ## Skill Routing
 
@@ -13,7 +13,7 @@ You execute implementation tasks by translating existing requirements (PRD) and 
 |--------|-------|
 | Requirements and design exist, need working code | **Implement** (this skill) |
 | Need to define what to build and why | `/create-prd` |
-| Need to design the technical approach | `/create-tdd` |
+| Need to design the technical approach | `/create-design-doc` |
 
 ## Core Principle: Small Vertical Slices with TDD
 
@@ -29,7 +29,7 @@ Each slice delivers a thin but complete piece of functionality that can be verif
 
 Implementation generates a lot of context: artifact contents, test output, code diffs, lint results. Be intentional about what you hold onto.
 
-- **Read selectively.** You rarely need the full PRD and TDD at once. Start with the implementation plan to identify the target phase, then pull in only the requirements and design sections that phase touches.
+- **Read selectively.** You rarely need the full PRD and design doc at once. Start with the implementation plan to identify the target phase, then pull in only the requirements and design sections that phase touches.
 - **Extract, then let go.** Once you have pulled out the facts you need from an artifact (requirement IDs, API contracts, constraints), you do not need the raw document anymore. Re-read a specific section later if something comes up.
 - **Shed finished work.** After a task's TDD cycle is green, the test output and code diff have served their purpose. Move on. Re-read a file only when the next task needs to reference it.
 - **Delegate heavy lifting.** When a chunk of work is self-contained (running the full test suite, verifying requirements against the PRD, a single Red-Green-Refactor cycle), consider handing it to a sub-agent so the output stays out of your context. Give sub-agents specific inputs: file paths, section references, constraints -- not open-ended instructions.
@@ -43,25 +43,25 @@ These are guidelines, not rules. Use your judgment about what to hold, what to s
 Locate and read the relevant artifacts:
 
 - Look for PRD at `.specs/[feature-slug]/PRD.md`
-- Look for TDD at `.specs/[feature-slug]/TDD.md`
+- Look for design doc at `.specs/[feature-slug]/DESIGN.md`
 
 If the user specifies a feature slug or path, use that. If not, ask using AskUserQuestion.
 
 If either artifact is missing, do not proceed. Instead, tell the user which artifact is missing and route them to the appropriate skill:
 
 - Missing PRD: "No PRD found. Use `/create-prd` to define the requirements first."
-- Missing TDD: "No TDD found. Use `/create-tdd` to define the technical design first."
-- Missing both: "No PRD or TDD found. Start with `/create-prd`, then `/create-tdd`."
+- Missing design doc: "No design doc found. Use `/create-design-doc` to define the technical design first."
+- Missing both: "No PRD or design doc found. Start with `/create-prd`, then `/create-design-doc`."
 
 After reading the artifacts, extract:
 
 - **Scope**: What requirements (from PRD) are in play for this task
-- **Architecture**: What technical approach (from TDD) applies
+- **Architecture**: What technical approach (from design doc) applies
 - **Constraints**: Hard limits from both documents
 - **Acceptance criteria**: How to verify the work is correct
-- **Phase**: If the TDD defines implementation phases, identify which phase to implement
+- **Phase**: If the design doc defines implementation phases, identify which phase to implement
 
-If the task scope is ambiguous (e.g., "implement the feature" when the TDD has 4 phases), ask the user to clarify which phase or subset of requirements to tackle.
+If the task scope is ambiguous (e.g., "implement the feature" when the design doc has 4 phases), ask the user to clarify which phase or subset of requirements to tackle.
 
 Present a brief summary of your understanding to the user before proceeding:
 
@@ -69,7 +69,7 @@ Present a brief summary of your understanding to the user before proceeding:
 Implementing: [task description]
 Phase: [N, if applicable]
 Requirements: [list of requirement IDs from PRD]
-Approach: [1-2 sentences from TDD]
+Approach: [1-2 sentences from design doc]
 Constraints: [key constraints]
 ```
 
@@ -77,7 +77,7 @@ Wait for user confirmation before moving to Step 2.
 
 ### Step 2 -- Break the Phase into Tasks
 
-Each TDD phase is already a vertical slice. Do not re-slice it. Instead, if the phase contains multiple distinct behaviors, break it into ordered tasks. Each task should be completable in a single TDD cycle (Red-Green-Refactor).
+Each design doc phase is already a vertical slice. Do not re-slice it. Instead, if the phase contains multiple distinct behaviors, break it into ordered tasks. Each task should be completable in a single TDD cycle (Red-Green-Refactor).
 
 If the phase is small enough for a single TDD cycle, skip the breakdown and move directly to Step 3.
 
@@ -122,11 +122,11 @@ For each task, follow this cycle strictly:
 
 #### 3d. Move to Next Task
 
-After completing one task, briefly state what was done and move to the next. Do not wait for user input between tasks unless something unexpected arises (ambiguity, a design decision not covered by the TDD, a conflict with existing code).
+After completing one task, briefly state what was done and move to the next. Do not wait for user input between tasks unless something unexpected arises (ambiguity, a design decision not covered by the design doc, a conflict with existing code).
 
 **When to pause and ask**:
 - A requirement is ambiguous and multiple interpretations are valid
-- The TDD's design does not account for a discovered constraint
+- The design doc does not account for a discovered constraint
 - Existing code conflicts with the planned approach
 - A dependency is missing or unavailable
 
@@ -137,7 +137,7 @@ After all tasks are complete:
 1. **Run the full test suite** -- all tests must pass
 2. **Run linters and formatters** -- use whatever is configured in the project (Prettier, ESLint, Biome, etc.). Fix any issues.
 3. **Verify against PRD** -- check each requirement that was in scope. Confirm the implementation satisfies it.
-4. **Verify against TDD** -- confirm the implementation follows the architectural decisions and contracts defined in the TDD.
+4. **Verify against design doc** -- confirm the implementation follows the architectural decisions and contracts defined in the design doc.
 
 These checks are independent -- run them in parallel when possible.
 
@@ -184,17 +184,17 @@ If the user asks for changes to the commit message, adjust and re-present. Only 
 Pause execution and ask the user when:
 
 - **Ambiguous scope**: The task could reasonably be interpreted multiple ways
-- **Design gap**: The TDD does not cover a situation encountered during implementation
+- **Design gap**: The design doc does not cover a situation encountered during implementation
 - **Conflicting requirements**: Two requirements contradict each other
 - **Missing dependency**: A package, service, or tool needed for implementation is not available
-- **Significant deviation**: The implementation needs to differ materially from the TDD's design
+- **Significant deviation**: The implementation needs to differ materially from the design doc's design
 
 Do not invent answers to these situations. Surface them and let the user decide.
 
 ## Common Mistakes
 
 **Implementing without reading the artifacts first.**
-The PRD and TDD exist for a reason. Read them before writing any code. Do not rely on the user's verbal summary alone.
+The PRD and design doc exist for a reason. Read them before writing any code. Do not rely on the user's verbal summary alone.
 
 **Writing tests after the implementation.**
 This is not TDD. Always write the test first, confirm it fails, then implement. Tests written after the fact tend to test the implementation rather than the behavior.
