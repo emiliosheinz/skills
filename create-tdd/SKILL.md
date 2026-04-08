@@ -60,7 +60,7 @@ The TDD must survive implementation changes. If the team migrates frameworks or 
 
 ### Mandatory (always required)
 
-If the user does not provide information for these, ask using AskUserQuestion.
+If the user does not provide information for these, ask using "AskUserQuestion".
 
 1. **Header & Metadata** -- Project name, tech lead, team, epic/ticket link, status, dates
 2. **Context** -- Background (current state), business domain, stakeholders
@@ -72,7 +72,7 @@ If the user does not provide information for these, ask using AskUserQuestion.
 
 ### Critical (required based on project type)
 
-Determine applicability from project context. If applicable but missing, ask the user.
+Determine applicability from project context. If applicable but missing, ask the user using "AskUserQuestion".
 
 | Section                        | Required When                          |
 | ------------------------------ | -------------------------------------- |
@@ -91,7 +91,7 @@ Determine applicability from project context. If applicable but missing, ask the
 
 ### Suggested (offer based on project size)
 
-After mandatory and critical sections are covered, offer these. For small projects (< 1 week), skip most. For large projects (> 1 month), include all that are relevant.
+After mandatory and critical sections are covered, offer these. For small projects and simple projects, skip most. For large and complex projects, include all that are relevant.
 
 | Section                    | When Valuable                               |
 | -------------------------- | ------------------------------------------- |
