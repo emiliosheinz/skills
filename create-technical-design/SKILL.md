@@ -73,7 +73,7 @@ After mandatory and critical sections, offer these. Skip most for small/simple p
 
 ### Step 1: Check for Upstream Artifacts
 
-Before gathering context, look for an existing PRD at `.specs/[feature-slug]/PRD.md`. If the feature slug is not yet known, ask for the feature name first and derive the slug.
+Before gathering context, look for an existing PRD at `.specs/[feature-slug]/PRODUCT-REQUIREMENTS.md`. If the feature slug is not yet known, ask for the feature name first and derive the slug.
 
 - **PRD found**: Read it. Use it as the source of truth for requirements, scope, and problem statement. Skip asking for information already covered by the PRD.
 - **PRD not found**: Proceed to gather context directly in Step 2.

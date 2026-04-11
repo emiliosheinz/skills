@@ -58,7 +58,7 @@ If any cannot be answered from what the user has said, continue the interview.
 
 Follow the template below. Every section is required. Write "None." for sections with no content — do not omit them.
 
-**File location:** Create the PRD to `.specs/[feature-slug]/PRD.md`. Derive the slug from the feature name: lowercase, words separated by hyphens (e.g. `user-onboarding`, `payment-refunds`). Create the directory if it does not exist. This keeps the PRD co-located with related documents (plans, specs) that will be added later for the same initiative.
+**File location:** Create the PRD to `.specs/[feature-slug]/PRODUCT-REQUIREMENTS.md`. Derive the slug from the feature name: lowercase, words separated by hyphens (e.g. `user-onboarding`, `payment-refunds`). Create the directory if it does not exist. This keeps the PRD co-located with related documents (plans, specs) that will be added later for the same initiative.
 
 ### Step 3 — Review with the user
 
@@ -72,7 +72,7 @@ If the feedback surfaces new information, gaps, or contradictions, return to Ste
 Once the PRD is finalized, offer the natural next step:
 
 ```
-PRD created at .specs/[feature-slug]/PRD.md
+PRD created at .specs/[feature-slug]/PRODUCT-REQUIREMENTS.md
 
 Suggested next steps:
 - Run /create-technical-design to define the architecture

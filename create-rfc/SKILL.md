@@ -90,7 +90,7 @@ If any required fields are missing, request them using "AskUserQuestion" before 
 
 ### Step 4: Generate RFC Document
 
-**File location:** Write the RFC to `.specs/[feature-slug]/RFC.md`. Derive the slug from the proposal title: lowercase, words separated by hyphens (e.g. `migrate-to-postgresql`, `adopt-microservices`). Create the directory if it does not exist. This co-locates the RFC with related documents (PRD, technical design, implementation plan) for the same initiative.
+**File location:** Scan the project for an existing RFC directory (`docs/rfcs/`, `docs/rfc/`, `rfcs/`, `.rfcs/`). Find the highest existing number (e.g., if `RFC-001` and `RFC-003` exist, the highest is 003) and assign the next number. If no directory exists, start at RFC-001 and suggest creating the directory. Suggested path: `docs/rfcs/{NNN}-{kebab-case-title}.md`. Confirm location with the user before writing.
 
 Generate the RFC in Markdown following the templates below.
 
@@ -99,7 +99,8 @@ Generate the RFC in Markdown following the templates below.
 After generating, offer:
 
 ```
-RFC Created: "[Title]"
+RFC Created: "RFC-{NNN}: [Title]"
+File: docs/rfcs/{NNN}-{kebab-case-title}.md
 
 Sections included:
 - Mandatory: Header & Metadata, Background, Assumptions, Decision Criteria, Options Considered, Action Items, Outcome
@@ -216,7 +217,8 @@ Unstated assumptions become invisible time bombs. When the RFC outcome stops wor
 After generating the RFC:
 
 ```
-RFC Created: "[Title]"
+RFC Created: "RFC-{NNN}: [Title]"
+File: docs/rfcs/{NNN}-{kebab-case-title}.md
 
 Impact: HIGH / MEDIUM / LOW
 Status: NOT STARTED

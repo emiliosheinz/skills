@@ -45,7 +45,7 @@ Locate and read available artifacts:
 - Look for implementation plan at `.specs/[feature-slug]/IMPLEMENTATION-PLAN.md` to understand the intended phases and tasks. This is your primary source for what to implement.
 - Look for implementation state at `.specs/[feature-slug]/IMPLEMENTATION-STATE.md` to see which phases and tasks have already been completed. This guides your phase selection.
 - Look for technical design at `.specs/[feature-slug]/TECHNICAL-DESIGN.md` to understand architectural decisions, API contracts, data flow, and other technical details.
-- Look for PRD at `.specs/[feature-slug]/PRD.md` to understand the requirements, user stories, acceptance criteria, and constraints.
+- Look for PRD at `.specs/[feature-slug]/PRODUCT-REQUIREMENTS.md` to understand the requirements, user stories, acceptance criteria, and constraints.
 
 If the user specifies a feature slug or path, use that. If not, ask using AskUserQuestion.
 
