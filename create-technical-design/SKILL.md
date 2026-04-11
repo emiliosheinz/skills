@@ -1,6 +1,10 @@
 ---
 name: create-technical-design
-description: Creates technical design documents covering architecture, system design, component responsibilities, data models, API contracts, trade-offs, and key decisions. Use when the user says "create a technical design", "write a technical design", "architecture document", "system design", "technical spec", or "design doc". Outputs architectural decisions only — no step-by-step implementation. Do NOT use for PRD, RFC, ADR, or implementation plans.
+description: >
+  Creates technical design documents covering architecture, component
+  responsibilities, data models, API contracts, trade-offs, and key decisions.
+  Defines what to build and how it is structured — not how to execute the work.
+triggers: create a technical design, write a technical design, architecture document, system design, technical spec, design doc
 ---
 
 # Technical Design Creator

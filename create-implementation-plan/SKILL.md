@@ -1,6 +1,10 @@
 ---
 name: create-implementation-plan
-description: Creates implementation plans covering phases, tasks, sequencing, dependencies, milestones, and risks. Use when the user says "create an implementation plan", "implementation plan", "execution plan", "plan the implementation of X", "how do we build X step by step", or "break this into phases". Can consume a technical design document as input. Do NOT use for architecture, system design, PRD, RFC, or ADR.
+description: >
+  Creates implementation plans covering phases, tasks, sequencing, dependencies,
+  milestones, and risks. Consumes a technical design document when one exists
+  and breaks the work into executable, vertically-sliced phases.
+triggers: create an implementation plan, implementation plan, execution plan, plan the implementation, break into phases, how do we build this step by step
 ---
 
 # Implementation Plan Creator

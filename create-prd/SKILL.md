@@ -1,6 +1,10 @@
 ---
 name: create-prd
-description: Creates structured, explicit, and detailed Product Requirement Documents (PRDs). Use when the user says "create a PRD", "write a PRD", "create a PRD for X", "define the requirements for X", "write product requirements", or wants to plan what to build before implementation begins. Do NOT use for technical design, implementation plan, RFC, or ADR docs.
+description: >
+  Creates structured, explicit, and detailed Product Requirement Documents
+  (PRDs). Captures problem statement, target users, success criteria, scope,
+  and functional requirements before implementation begins.
+triggers: create a PRD, write a PRD, product requirements, define requirements, what to build, PRD
 ---
 
 # PRD Creator 

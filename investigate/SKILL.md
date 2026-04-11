@@ -1,5 +1,5 @@
 ---
-skill: investigate
+name: investigate
 description: >
   Guides the agent through a five-phase debugging workflow: structured intake,
   evidence investigation, ranked hypothesis generation, test-case reproduction,
