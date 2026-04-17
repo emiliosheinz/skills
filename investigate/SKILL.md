@@ -41,6 +41,13 @@ Ask the user all six questions before proceeding. Use the `AskUserQuestion` tool
 5. Is this reproducible consistently, or intermittent?
 6. Can you share the relevant code, logs, or stack trace?
 
+**Interview rules:**
+- Use `AskUserQuestion` for every question. Ask one topic at a time — do not batch unrelated questions.
+- Every answer is a branch. When a response introduces a new condition, variation, or uncertainty, follow that branch to resolution before continuing. For example: if the user says "it started after the deploy", ask which deploy, what changed, and whether reverting was attempted.
+- When a question cannot be answered due to a prior unknown, resolve the unknown first.
+- Push back on vague answers. "It sometimes fails" is not an answer — ask under what conditions, how often, and whether there is a pattern.
+- Do not close intake until you have a precise, reproducible description of the failure or an explicit "unknown" with enough context to investigate anyway.
+
 **Gate:** Do not proceed to Phase 2 until all six questions are answered or marked "unknown".
 
 ## Phase 2 — Investigate

@@ -84,19 +84,35 @@ Before gathering context, look for an existing PRD at `.specs/[feature-slug]/PRO
 
 ### Step 2: Gather Context
 
-Ask for:
-- Project/feature name (if not already known from Step 1)
-- Project type (new feature, integration, refactor/migration, etc.)
-- Whether a clear problem statement exists or needs defining (skip if PRD was found)
+**Do not draft anything yet.**
+
+Conduct a relentless interview using `AskUserQuestion` until you have a full shared understanding of the problem and solution space. Cover:
+- Project/feature name and type (new feature, integration, refactor/migration, etc.)
+- Problem statement: what is broken or missing, who is affected, quantified impact
+- Solution approach: what is being built at a high level and why this approach over alternatives
+- Scope boundaries: what is explicitly in V1, what is explicitly deferred, and why
+- Key decisions already made and the reasoning behind them
+- Known risks and constraints (technical, legal, operational)
+
+**Interview rules:**
+- Ask one focused topic at a time using `AskUserQuestion`. You may group tightly related sub-questions, but never ask about multiple unrelated topics at once.
+- Every answer is a branch. When a response introduces a new trade-off, alternative, constraint, or integration boundary, follow that branch to resolution before moving on.
+- When a decision depends on a prior unresolved decision, surface the dependency and resolve the blocker first.
+- Push back on vague answers. "We'll use whatever makes sense" is not an answer — ask what options were considered and which was chosen and why.
+- Do not stop until you can write every mandatory section without inventing a single detail.
+
+Skip asking for information already covered by the PRD (Step 1).
 
 ### Step 3: Collect Mandatory Information
 
-Ensure you have enough to write all mandatory sections. Ask for anything missing (skip fields already answered by the PRD):
-- Tech lead and team members
-- Problem with impact (what, why, quantified consequences)
-- In-scope and out-of-scope items (min 3 each)
-- High-level solution approach
-- At least 3 risks
+Before drafting, verify you can answer all of the following without inventing anything:
+- Who owns this work (tech lead, team)?
+- What specific problems are being solved, with quantified impact?
+- What is in scope (min 3 items) and explicitly out of scope (min 3 items)?
+- What is the high-level solution and architecture approach?
+- What are at least 3 concrete risks with mitigation strategies?
+
+If any cannot be answered from what the user has said, continue the interview.
 
 ### Step 4: Determine Critical Sections
 

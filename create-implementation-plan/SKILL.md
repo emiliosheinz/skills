@@ -67,18 +67,34 @@ Check `.specs/[feature-slug]/` for existing documents. If the feature slug is no
 
 ### Step 2: Gather Context
 
-Ask for (skip anything already answered by upstream artifacts):
+**Do not draft anything yet.**
+
+Conduct a relentless interview using `AskUserQuestion` until you have a full shared understanding of what needs to be built and how. Cover:
 - Project/feature name and team members
-- Target timeline or milestone dates
-- Any known constraints (hard deadlines, team availability, external dependencies)
+- Target timeline, milestone dates, and any hard deadlines
+- Known constraints: team availability, external dependencies, technical blockers
+- The simplest possible end-to-end flow that proves the architecture works (tracer bullet)
+- What production readiness means for this project (monitoring, rollout strategy, docs)
+
+Skip anything already answered by upstream artifacts (Step 1).
+
+**Interview rules:**
+- Ask one focused topic at a time using `AskUserQuestion`. You may group tightly related sub-questions, but never ask about multiple unrelated topics at once.
+- Every answer is a branch. When a response introduces a new dependency, constraint, integration point, or sequencing concern, follow that branch to resolution before moving on.
+- When the sequencing of one phase depends on a decision about another phase, surface the dependency and resolve it first.
+- Push back on vague answers. "We'll figure it out" is not an answer — ask what needs to be figured out and resolve it now.
+- Do not stop until you can write every phase, its acceptance criteria, and its dependencies without inventing a single detail.
 
 ### Step 3: Collect Phase Information
 
-Ensure you have enough to structure phases with vertical slices:
+Before structuring phases, verify you can answer all of the following without inventing anything:
 - What is the simplest end-to-end flow that proves the architecture?
 - What is the core business logic that must be complete for V1?
-- Are there external integrations or async processes?
+- Are there external integrations or async processes, and when do they enter the plan?
 - What does production readiness require (monitoring, rollback, docs)?
+- Are there hard sequencing constraints between phases?
+
+If any cannot be answered from what the user has said, continue the interview.
 
 ### Step 4: Determine Critical Sections
 

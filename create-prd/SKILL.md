@@ -38,16 +38,17 @@ Through an open-ended conversation, develop a complete understanding of the prob
 - Articulate clear failure conditions: what specific outcomes, gaps, or user/stakeholder reactions would indicate the solution was incorrectly designed or implemented.
 
 **How to conduct the interview:**
-- Ask focused questions. Group related questions together when it makes sense, but avoid overwhelming the user with too many at once.
-- When an answer opens a new branch (edge case, persona variation, scope boundary), follow it to resolution before continuing.
-- When a decision depends on a prior unresolved decision, surface the dependency and resolve the blocker first.
-- Push back on vague answers. "It depends" is not an answer — ask what it depends on, then ask about each case.
-- Keep going until you can state the full scope, requirements, and success criteria without needing to invent anything yourself.
+- Ask one focused topic at a time using the `AskUserQuestion` tool. You may group tightly related sub-questions under one topic, but never ask about multiple unrelated topics in a single message.
+- Every answer is a branch. When a response introduces a new edge case, persona variation, scope boundary, or constraint, follow that branch to full resolution before moving to the next topic.
+- When a decision depends on a prior unresolved decision, surface the dependency explicitly and resolve the blocker before continuing.
+- Push back on vague answers. "It depends" is not an answer — ask what it depends on, then ask about each case. "We'll figure it out later" is not an answer — ask what options exist and which applies here.
+- Keep going. Do not stop the interview because the problem feels understood. Stop only when you can state every item in the list above without inventing a single word.
 
 **Additional rules for the interview:**
 - Do not proceed until you can state all of the above without inventing anything.
-- If the user cannot answer a question, record it as an open question in the PRD — do not invent an answer.
+- If the user genuinely cannot answer a question, record it as an open question in the PRD — do not invent an answer or skip it silently.
 - When asking questions, use dedicated tools (e.g. AskUserQuestion) to present them clearly and consistently to the user.
+- Treat every open branch as a blocker. A branch is open if any answer is vague, conditional, or incomplete. Resolve it before moving on.
 
 **Before moving to Step 2, verify internally that you can answer all of the following without inventing anything:**
 - What is the core problem from the user's perspective?
