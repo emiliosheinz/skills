@@ -26,6 +26,7 @@ The technical design must survive implementation changes. If the team migrates O
 
 ## Routing
 
+- Understand the problem space first → `/research`
 - Define requirements → `/create-prd`
 - Debate and decide options → `/create-rfc`
 - Record a finalized decision → `/create-adr`
@@ -77,10 +78,12 @@ After mandatory and critical sections, offer these. Skip most for small/simple p
 
 ### Step 1: Check for Upstream Artifacts
 
-Before gathering context, look for an existing PRD at `.specs/[feature-slug]/PRODUCT-REQUIREMENTS.md`. If the feature slug is not yet known, ask for the feature name first and derive the slug.
+Before gathering context, look for upstream artifacts in `.specs/[feature-slug]/`. If the feature slug is not yet known, ask for the feature name first and derive the slug.
 
-- **PRD found**: Read it. Use it as the source of truth for requirements, scope, and problem statement. Skip asking for information already covered by the PRD.
-- **PRD not found**: Proceed to gather context directly in Step 2.
+- **RESEARCH.md found** (`.specs/[feature-slug]/RESEARCH.md`): Read it. Use the Problem Framing, Stakeholders, Constraints, and Codebase Findings sections as a starting point. Skip asking for anything already answered by the research. Note which open questions from the research remain unresolved and address them during the interview.
+- **PRD found** (`.specs/[feature-slug]/PRODUCT-REQUIREMENTS.md`): Read it. Use it as the source of truth for requirements, scope, and problem statement. Skip asking for information already covered by the PRD.
+- **Both found**: Read both. The PRD takes precedence for requirements; the RESEARCH.md provides additional context for constraints and codebase findings.
+- **Neither found**: Proceed to gather context directly in Step 2.
 
 ### Step 2: Gather Context
 

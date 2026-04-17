@@ -32,6 +32,7 @@ npx skills add emiliosheinz/agent-skills --global
 
 | Skill | Description |
 |-------|-------------|
+| <nobr>`research`</nobr> | > |
 | <nobr>`create-adr`</nobr> | > |
 | <nobr>`create-implementation-plan`</nobr> | > |
 | <nobr>`create-prd`</nobr> | > |
@@ -50,7 +51,7 @@ Skills map to different stages of the decision-to-implementation pipeline. Every
 flowchart TB
     subgraph main["Main Flow"]
         direction LR
-        PRD["create-prd"] --> TD["create-technical-design"] --> IP["create-implementation-plan"] --> IMP["implement"]
+        RES["research"] --> PRD["create-prd"] --> TD["create-technical-design"] --> IP["create-implementation-plan"] --> IMP["implement"]
     end
 
     subgraph lateral["Use at any point"]
@@ -68,12 +69,14 @@ You do not have to start at the beginning. Jump in at whichever stage fits the t
 
 ```mermaid
 flowchart LR
+    RES["research"]
     PRD["create-prd"]
     TD["create-technical-design"]
     IP["create-implementation-plan"]
     IMP["implement"]
 
-    PRD -->|"full flow"| TD --> IP --> IMP
+    RES -->|"full flow"| PRD --> TD --> IP --> IMP
+    RES -->|"skip requirements"| TD
     PRD -->|"skip design"| IP
     TD -->|"skip planning"| IMP
     IP -->|"skip to code"| IMP
@@ -81,10 +84,11 @@ flowchart LR
 
 | Stage | Skill | Question It Answers | Upstream Input |
 |-------|-------|---------------------|----------------|
-| Requirements | `create-prd` | What are we building, for whom, and why? | None — gathered via interview |
+| Research | `research` | What is the problem, who is affected, and what do we know? | None — gathered via interview, codebase scan, and web research |
+| Requirements | `create-prd` | What are we building, for whom, and why? | RESEARCH (optional) |
 | Decision | `create-rfc` | Should we do X or Y? Which approach? | PRD (optional) |
 | Record | `create-adr` | Why did we choose X over Y? | RFC outcome (optional) |
-| Design | `create-technical-design` | What is the architecture, data model, and API contract? | PRD if available, otherwise gathers directly |
+| Design | `create-technical-design` | What is the architecture, data model, and API contract? | RESEARCH and/or PRD if available, otherwise gathers directly |
 | Plan | `create-implementation-plan` | How do we execute the work in phases? | Technical design or PRD if available, otherwise researches codebase |
 | Build | `implement` | Turn the plan into tested, working code | Any combination of above, or derives from codebase |
 
@@ -92,7 +96,8 @@ flowchart LR
 
 > `create-rfc` and `create-adr` can be invoked at any point when a significant decision needs to be proposed or recorded. They are not required for the main flow but are available whenever needed.
 
-- **Full process**: `create-prd` → `create-technical-design` → `create-implementation-plan` → `implement`
+- **Full process**: `research` → `create-prd` → `create-technical-design` → `create-implementation-plan` → `implement`
+- **Known problem, no prior research**: `create-prd` → `create-technical-design` → `create-implementation-plan` → `implement`
 - **Technical task, no product work**: `create-technical-design` → `create-implementation-plan` → `implement`
 - **Simple feature**: `create-implementation-plan` → `implement`
 - **Straightforward task**: `implement` directly

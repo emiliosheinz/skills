@@ -13,6 +13,7 @@ triggers: create a PRD, write a PRD, product requirements, define requirements, 
 
 ## Routing
 
+- Understand the problem space first → `/research`
 - Decision still needs alignment → `/create-rfc`
 - Record a finalized decision → `/create-adr`
 - Document architecture → `/create-technical-design`
@@ -20,7 +21,14 @@ triggers: create a PRD, write a PRD, product requirements, define requirements, 
 
 ## Process
 
-### Step 1 — Gather context
+### Step 1 — Check for upstream research
+
+Before gathering context, check for an existing research document at `.specs/[feature-slug]/RESEARCH.md`. If the feature slug is not yet known, ask for the feature name first and derive the slug.
+
+- **RESEARCH.md found**: Read it. Use it as the starting point for the interview — skip asking for anything already answered by the research (problem framing, stakeholders, constraints, open questions). Note which open questions from the research remain unresolved and address them during the interview.
+- **RESEARCH.md not found**: Proceed directly to Step 2.
+
+### Step 2 — Gather context
 
 **Do not draft anything yet.**
  
@@ -50,7 +58,7 @@ Through an open-ended conversation, develop a complete understanding of the prob
 - When asking questions, use dedicated tools (e.g. AskUserQuestion) to present them clearly and consistently to the user.
 - Treat every open branch as a blocker. A branch is open if any answer is vague, conditional, or incomplete. Resolve it before moving on.
 
-**Before moving to Step 2, verify internally that you can answer all of the following without inventing anything:**
+**Before moving to Step 3, verify internally that you can answer all of the following without inventing anything:**
 - What is the core problem from the user's perspective?
 - Who are the users and what does each need?
 - What does success look like, measurably?
@@ -59,20 +67,20 @@ Through an open-ended conversation, develop a complete understanding of the prob
 
 If any cannot be answered from what the user has said, continue the interview.
 
-### Step 2 — Draft using the template
+### Step 3 — Draft using the template
 
 Follow the template below. Every section is required. Write "None." for sections with no content — do not omit them.
 
 **File location:** Create the PRD to `.specs/[feature-slug]/PRODUCT-REQUIREMENTS.md`. Derive the slug from the feature name: lowercase, words separated by hyphens (e.g. `user-onboarding`, `payment-refunds`). Create the directory if it does not exist. This keeps the PRD co-located with related documents (plans, specs) that will be added later for the same initiative.
 
-### Step 3 — Review with the user
+### Step 4 — Review with the user
 
 Present the draft. Ask:
 - Are all non-goals captured?
 - Is there anything missing or incorrect?
 - Are the success criteria measurable as stated?
 
-If the feedback surfaces new information, gaps, or contradictions, return to Step 1 and continue the interview before updating the draft. Repeat steps 1–3 until the PRD is complete and accurate.
+If the feedback surfaces new information, gaps, or contradictions, return to Step 2 and continue the interview before updating the draft. Repeat steps 2–4 until the PRD is complete and accurate.
 
 Once the PRD is finalized, offer the natural next step:
 

@@ -126,16 +126,63 @@ After completing one task, mark it as `- [x]` in `IMPLEMENTATION-STATE.md`, brie
 
 After all tasks are complete, delegate the full review to a **specialized review subagent** with a fresh context. This ensures the validation is performed with an unbiased perspective, independent from the implementation context.
 
-Provide the subagent with all relevant artifacts (PRD, technical design, implementation plan, and codebase access) and instruct it to perform the following checks, returning a structured verdict (pass / fail per check, plus actionable findings for any failure):
+Provide the subagent with all relevant artifacts (PRD, technical design, implementation plan, and codebase access) and instruct it to perform the following checks, returning a structured verdict:
 
-1. **Run the full test suite** -- all tests must pass.
-2. **Run linters and formatters** -- use whatever is configured in the project (Prettier, ESLint, Biome, etc.). Report any unfixed issues.
-3. **Verify against requirements** -- check each requirement or derived scope item. Confirm the implementation satisfies it. Use the PRD if one exists; otherwise use the acceptance criteria derived in Step 1.
-4. **Verify against architecture** -- confirm the implementation follows the architectural decisions and code patterns. Use the technical design if one exists; otherwise verify consistency with the existing codebase patterns derived in Step 1.
+**Check 1 — Test suite** (automated)
+Run the full test suite. All tests must pass. Report any failures with the test name, failure message, and file location.
 
-Checks 1 and 2 are independent and should be run in parallel; the same applies to checks 3 and 4. The subagent must return a clear summary of what passed, what failed, and exactly what needs to be fixed.
+**Check 2 — Lint and format** (automated)
+Run whatever linters and formatters are configured in the project (Prettier, ESLint, Biome, etc.). Report any unfixed issues with file and line number.
 
-If the subagent reports any failures, return to Step 2, address every finding, and re-run Step 3 with a new subagent invocation until all checks pass.
+**Check 3 — Requirement tracing** (spec-driven)
+If a PRD exists at `.specs/[feature-slug]/PRODUCT-REQUIREMENTS.md`:
+- Extract every requirement ID (e.g. `ONBD-01`, `PAY-03`)
+- For each requirement ID, identify the test(s) or code that satisfies it
+- Produce a traceability table:
+
+  | Requirement ID | Priority | Description | Status | Evidence (test or file:line) |
+  |----------------|----------|-------------|--------|------------------------------|
+  | [ID] | P0/P1/P2 | [summary] | Pass / Fail / Not covered | [test name or file:line] |
+
+- A requirement is **Pass** if there is at least one test that explicitly verifies it and that test passes
+- A requirement is **Not covered** if no test references it — treat this as a failure
+- A requirement is **Fail** if a test exists but fails
+
+If no PRD exists, verify against the acceptance criteria derived in Step 1 using the same table structure.
+
+**Check 4 — Architecture compliance** (design-driven)
+Confirm the implementation follows the architectural decisions and code patterns. Use the technical design if one exists; otherwise verify consistency with the existing codebase patterns derived in Step 1.
+
+Checks 1 and 2 are independent and should be run in parallel. Checks 3 and 4 are independent and should be run in parallel.
+
+The subagent must return a structured verdict in this format:
+
+```
+## Validation Verdict
+
+### Check 1 — Test Suite: [PASS / FAIL]
+[Failures listed by test name and file:line, or "All tests pass."]
+
+### Check 2 — Lint / Format: [PASS / FAIL]
+[Issues listed by file:line, or "No issues."]
+
+### Check 3 — Requirement Tracing: [PASS / FAIL]
+[Full traceability table]
+[Summary: N/N requirements covered, N failing]
+
+### Check 4 — Architecture Compliance: [PASS / FAIL]
+[Findings listed, or "No violations found."]
+
+### Overall: [PASS / FAIL]
+```
+
+**If any check fails**, do not proceed to Step 4. Instead:
+
+1. Collect all failures into a delta list — the specific requirement IDs, test failures, lint issues, or architecture violations that did not pass
+2. Update `IMPLEMENTATION-STATE.md`: add a `**Validation failures:**` note under the current phase listing each failing item
+3. Return to Step 2 and address **only** the failing items — do not re-implement passing items
+4. After fixing, re-run Step 3 with a new subagent invocation
+5. Repeat until the verdict is `Overall: PASS`
 
 ### Step 4 -- Summarize and Commit
 
