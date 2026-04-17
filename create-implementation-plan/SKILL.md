@@ -2,9 +2,8 @@
 name: create-implementation-plan
 description: >
   Creates implementation plans covering phases, tasks, sequencing, dependencies,
-  milestones, and risks. Consumes a technical design document when one exists
-  and breaks the work into executable, vertically-sliced phases.
-triggers: create an implementation plan, implementation plan, execution plan, plan the implementation, break into phases, how do we build this step by step
+  milestones, and risks. Use when asked to create an implementation plan, plan an
+  execution, break work into phases, or describe how to build something step by step.
 ---
 
 # Implementation Plan Creator
@@ -69,7 +68,7 @@ Check `.specs/[feature-slug]/` for existing documents. If the feature slug is no
 
 **Do not draft anything yet.**
 
-Conduct a relentless interview using `AskUserQuestion` until you have a full shared understanding of what needs to be built and how. Cover:
+Gather missing context using `AskUserQuestion`. Capture intent from what the user has already shared — only ask for what is genuinely absent. Cover:
 - Project/feature name and team members
 - Target timeline, milestone dates, and any hard deadlines
 - Known constraints: team availability, external dependencies, technical blockers
@@ -78,12 +77,10 @@ Conduct a relentless interview using `AskUserQuestion` until you have a full sha
 
 Skip anything already answered by upstream artifacts (Step 1).
 
-**Interview rules:**
+**Context-gathering rules:**
 - Ask one focused topic at a time using `AskUserQuestion`. You may group tightly related sub-questions, but never ask about multiple unrelated topics at once.
-- Every answer is a branch. When a response introduces a new dependency, constraint, integration point, or sequencing concern, follow that branch to resolution before moving on.
+- When a response introduces a new dependency, constraint, integration point, or sequencing concern, follow that branch to resolution before moving on.
 - When the sequencing of one phase depends on a decision about another phase, surface the dependency and resolve it first.
-- Push back on vague answers. "We'll figure it out" is not an answer — ask what needs to be figured out and resolve it now.
-- Do not stop until you can write every phase, its acceptance criteria, and its dependencies without inventing a single detail.
 
 ### Step 3: Collect Phase Information
 

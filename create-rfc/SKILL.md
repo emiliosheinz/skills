@@ -2,9 +2,8 @@
 name: create-rfc
 description: >
   Creates structured Request for Comments (RFC) documents for proposing and
-  deciding on significant changes. Drives stakeholder alignment before a major
-  technical or process decision is made.
-triggers: create an RFC, write an RFC, draft an RFC, create a proposal, RFC, stakeholder alignment, propose a change
+  deciding on significant changes. Use when asked to create or write an RFC,
+  draft a proposal, align stakeholders, or propose a change before a decision.
 ---
 
 # RFC Creator
@@ -26,40 +25,36 @@ If the user provides no context, use **AskUserQuestion** to collect basic inform
 
 ```json
 {
-  "title": "RFC Information",
   "questions": [
     {
-      "id": "rfc_topic",
-      "prompt": "What is the topic or change you want to propose?",
+      "question": "What is the topic or change you want to propose?",
+      "type": "text"
+    },
+    {
+      "question": "What is the estimated impact of this change?",
+      "type": "single_choice",
       "options": [
-        { "id": "free_text", "label": "I'll describe it below" }
+        "HIGH — affects multiple teams, systems, or users",
+        "MEDIUM — affects one team or system",
+        "LOW — limited scope, easily reversible"
       ]
     },
     {
-      "id": "rfc_impact",
-      "prompt": "What is the estimated impact of this change?",
+      "question": "Is there a due date or urgency?",
+      "type": "single_choice",
       "options": [
-        { "id": "high", "label": "HIGH - affects multiple teams, systems, or users" },
-        { "id": "medium", "label": "MEDIUM - affects one team or system" },
-        { "id": "low", "label": "LOW - limited scope, easily reversible" }
+        "Yes, we need a decision soon",
+        "Part of planned roadmap",
+        "No fixed deadline"
       ]
     },
     {
-      "id": "rfc_urgency",
-      "prompt": "Is there a due date or urgency?",
+      "question": "Do you have options/alternatives in mind?",
+      "type": "single_choice",
       "options": [
-        { "id": "urgent", "label": "Yes, we need a decision soon" },
-        { "id": "planned", "label": "Part of planned roadmap" },
-        { "id": "open", "label": "No fixed deadline" }
-      ]
-    },
-    {
-      "id": "rfc_options",
-      "prompt": "Do you have options/alternatives in mind?",
-      "options": [
-        { "id": "yes", "label": "Yes, I have 2+ options to compare" },
-        { "id": "one", "label": "I have a preferred option, need to document alternatives" },
-        { "id": "no", "label": "No, need help structuring options" }
+        "Yes, I have 2+ options to compare",
+        "I have a preferred option, need to document alternatives",
+        "No, need help structuring options"
       ]
     }
   ]
@@ -143,7 +138,7 @@ Would you like me to:
 
 ## Section Templates
 
-Read `references/section-templates.md` when generating an RFC document. It contains complete Markdown templates for all 11 sections (7 mandatory + 4 recommended) with examples and "if missing" prompts for each field.
+Generate each section using the structure described in **Document Structure** above. For each of the 11 sections (7 mandatory + 4 recommended), write the section heading, populate all fields from the gathered context, and use placeholder text in italics (e.g. *To be filled after decision*) for fields that will be completed later.
 
 ## RFC Quality Checklist
 

@@ -1,11 +1,9 @@
 ---
 name: research
 description: >
-  Deeply explores a problem space — interviewing the user, scanning the
-  codebase, and researching external references — before any spec or design
-  work begins. Produces a structured RESEARCH.md artifact consumed by
-  create-prd and create-technical-design.
-triggers: research this, explore this problem, understand the problem, investigate the problem space, research phase, before we spec
+  Deeply explores a problem space before any spec or design work begins. Use
+  when asked to research a topic, explore or understand a problem space, or
+  gather context before writing requirements or designing a solution.
 ---
 
 # Research
@@ -26,7 +24,7 @@ Deeply understand a problem, its context, and its constraints before thinking ab
 
 **Do not read any code or fetch any URLs yet.**
 
-Conduct a structured interview to extract what the user already knows about the problem space. Cover:
+Use `AskUserQuestion` to gather what the user already knows about the problem space. Capture intent from what they have already shared — only ask for what is genuinely missing. Cover:
 
 - What problem are you trying to solve? Describe it from the perspective of the person experiencing it.
 - Who is affected? Be specific about roles, contexts, and frequency.
@@ -37,11 +35,10 @@ Conduct a structured interview to extract what the user already knows about the 
 - Are there existing solutions, prior art, or competitor approaches worth studying?
 - What would make this research complete? What questions must be answered before spec work can begin?
 
-**Interview rules:**
+**Context-gathering rules:**
 - Ask one focused topic at a time using `AskUserQuestion`. You may group tightly related sub-questions, but never ask about multiple unrelated topics in a single message.
-- Every answer is a branch. When a response introduces a new constraint, stakeholder, edge case, or dependency, follow that branch to full resolution before moving on.
-- Push back on vague answers. "It depends" is not an answer — ask what it depends on and resolve each case. "We'll figure it out later" is not an answer — record it as an open question and confirm the user agrees it is unresolved.
-- Do not stop until you have captured every known fact and every known unknown.
+- When a response introduces a new constraint, stakeholder, edge case, or dependency, follow that branch to resolution before moving on.
+- Record anything the user explicitly flags as unknown as an open question — do not invent answers.
 
 ### Step 2 — Codebase Scan
 

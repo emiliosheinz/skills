@@ -2,9 +2,8 @@
 name: implement
 description: >
   Executes implementation by consuming existing PRD, technical design, and
-  implementation plan artifacts. Turns requirements and design documents into
-  working, tested code using TDD (Red-Green-Refactor).
-triggers: implement this, implement phase, build this feature, start implementing, execute the plan, write the code, build it
+  implementation plan artifacts. Use when asked to implement a feature, build
+  something, start implementing, write the code, or execute an existing plan.
 ---
 
 # Implementation Executor

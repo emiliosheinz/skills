@@ -1,10 +1,9 @@
 ---
 name: create-technical-design
 description: >
-  Creates technical design documents covering architecture, component
-  responsibilities, data models, API contracts, trade-offs, and key decisions.
-  Defines what to build and how it is structured — not how to execute the work.
-triggers: create a technical design, write a technical design, architecture document, system design, technical spec, design doc
+  Creates technical design documents covering architecture, component responsibilities,
+  data models, API contracts, and key decisions. Use when asked for a technical design,
+  architecture document, system design, technical spec, or design doc.
 ---
 
 # Technical Design Creator
@@ -89,7 +88,7 @@ Before gathering context, look for upstream artifacts in `.specs/[feature-slug]/
 
 **Do not draft anything yet.**
 
-Conduct a relentless interview using `AskUserQuestion` until you have a full shared understanding of the problem and solution space. Cover:
+Gather missing context using `AskUserQuestion`. Capture intent from what the user has already shared — only ask for what is genuinely absent. Cover:
 - Project/feature name and type (new feature, integration, refactor/migration, etc.)
 - Problem statement: what is broken or missing, who is affected, quantified impact
 - Solution approach: what is being built at a high level and why this approach over alternatives
@@ -97,12 +96,10 @@ Conduct a relentless interview using `AskUserQuestion` until you have a full sha
 - Key decisions already made and the reasoning behind them
 - Known risks and constraints (technical, legal, operational)
 
-**Interview rules:**
+**Context-gathering rules:**
 - Ask one focused topic at a time using `AskUserQuestion`. You may group tightly related sub-questions, but never ask about multiple unrelated topics at once.
-- Every answer is a branch. When a response introduces a new trade-off, alternative, constraint, or integration boundary, follow that branch to resolution before moving on.
+- When a response introduces a new trade-off, alternative, constraint, or integration boundary, follow that branch to resolution before moving on.
 - When a decision depends on a prior unresolved decision, surface the dependency and resolve the blocker first.
-- Push back on vague answers. "We'll use whatever makes sense" is not an answer — ask what options were considered and which was chosen and why.
-- Do not stop until you can write every mandatory section without inventing a single detail.
 
 Skip asking for information already covered by the PRD (Step 1).
 

@@ -1,10 +1,9 @@
 ---
 name: create-prd
 description: >
-  Creates structured, explicit, and detailed Product Requirement Documents
-  (PRDs). Captures problem statement, target users, success criteria, scope,
-  and functional requirements before implementation begins.
-triggers: create a PRD, write a PRD, product requirements, define requirements, what to build, PRD
+  Creates structured, explicit, and detailed Product Requirement Documents (PRDs).
+  Use when asked to create or write a PRD, define product requirements, specify
+  what to build, or capture requirements before implementation begins.
 ---
 
 # PRD Creator 
@@ -45,17 +44,16 @@ Through an open-ended conversation, develop a complete understanding of the prob
 - Identify adjacent problem areas or extensions that are intentionally not addressed, and explain why they are out of scope for this iteration.
 - Articulate clear failure conditions: what specific outcomes, gaps, or user/stakeholder reactions would indicate the solution was incorrectly designed or implemented.
 
-**How to conduct the interview:**
-- Ask one focused topic at a time using the `AskUserQuestion` tool. You may group tightly related sub-questions under one topic, but never ask about multiple unrelated topics in a single message.
-- Every answer is a branch. When a response introduces a new edge case, persona variation, scope boundary, or constraint, follow that branch to full resolution before moving to the next topic.
-- When a decision depends on a prior unresolved decision, surface the dependency explicitly and resolve the blocker before continuing.
-- Push back on vague answers. "It depends" is not an answer — ask what it depends on, then ask about each case. "We'll figure it out later" is not an answer — ask what options exist and which applies here.
-- Keep going. Do not stop the interview because the problem feels understood. Stop only when you can state every item in the list above without inventing a single word.
+**How to gather context:**
+- Use the `AskUserQuestion` tool to ask one focused topic at a time. You may group tightly related sub-questions under one topic, but never ask about multiple unrelated topics in a single message.
+- Capture intent from what the user has already shared — only ask for what is genuinely missing.
+- When a response introduces a new edge case, persona variation, scope boundary, or constraint, follow that branch before moving to the next topic.
+- When a decision depends on a prior unresolved decision, surface the dependency and resolve the blocker before continuing.
+- If the user cannot answer a question, record it as an open question in the PRD — do not invent an answer or skip it silently.
 
-**Additional rules for the interview:**
+**Additional rules:**
 - Do not proceed until you can state all of the above without inventing anything.
-- If the user genuinely cannot answer a question, record it as an open question in the PRD — do not invent an answer or skip it silently.
-- When asking questions, use dedicated tools (e.g. AskUserQuestion) to present them clearly and consistently to the user.
+- When asking questions, use dedicated tools (e.g. AskUserQuestion) to present them clearly.
 - Treat every open branch as a blocker. A branch is open if any answer is vague, conditional, or incomplete. Resolve it before moving on.
 
 **Before moving to Step 3, verify internally that you can answer all of the following without inventing anything:**

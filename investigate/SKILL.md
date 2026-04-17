@@ -1,11 +1,9 @@
 ---
 name: investigate
 description: >
-  Guides the agent through a five-phase debugging workflow: structured intake,
-  evidence investigation, ranked hypothesis generation, test-case reproduction,
-  and a concrete fix proposal with prevention measures. Saves the final report
-  to .specs/bugs/[bug-name].md following project conventions.
-triggers: debug, bug, error, not working, broken, issue, exception, crash, failing test, unexpected behavior
+  Guides the agent through a five-phase debugging workflow to diagnose and fix
+  issues. Use when reporting a bug, error, crash, broken or unexpected behavior,
+  exception, failing test, or anything that is not working as expected.
 ---
 
 # Investigation Executor
@@ -32,7 +30,7 @@ Track your phase as you work. Update this mentally — never skip ahead:
 
 **Do not read any code or form any theory yet.**
 
-Ask the user all six questions before proceeding. Use the `AskUserQuestion` tool to present them. Accept "unknown" as a valid answer, but record it explicitly.
+Use `AskUserQuestion` to gather the following information. Capture what the user has already shared in their message — only ask for what is genuinely missing. Accept "unknown" as a valid answer, but record it explicitly.
 
 1. What did you expect to happen?
 2. What is actually happening? (include any error messages verbatim)
@@ -41,12 +39,10 @@ Ask the user all six questions before proceeding. Use the `AskUserQuestion` tool
 5. Is this reproducible consistently, or intermittent?
 6. Can you share the relevant code, logs, or stack trace?
 
-**Interview rules:**
-- Use `AskUserQuestion` for every question. Ask one topic at a time — do not batch unrelated questions.
-- Every answer is a branch. When a response introduces a new condition, variation, or uncertainty, follow that branch to resolution before continuing. For example: if the user says "it started after the deploy", ask which deploy, what changed, and whether reverting was attempted.
+**Context-gathering rules:**
+- Use `AskUserQuestion` for each missing piece. Ask one topic at a time — do not batch unrelated questions.
+- When a response introduces a new condition, variation, or uncertainty, follow that branch to resolution before continuing.
 - When a question cannot be answered due to a prior unknown, resolve the unknown first.
-- Push back on vague answers. "It sometimes fails" is not an answer — ask under what conditions, how often, and whether there is a pattern.
-- Do not close intake until you have a precise, reproducible description of the failure or an explicit "unknown" with enough context to investigate anyway.
 
 **Gate:** Do not proceed to Phase 2 until all six questions are answered or marked "unknown".
 

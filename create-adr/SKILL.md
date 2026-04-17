@@ -1,10 +1,9 @@
 ---
 name: create-adr
 description: >
-  Creates Architecture Decision Records (ADRs) to document significant
-  architectural choices and their rationale for future team members. Saves
-  the record to .specs/decisions/[slug].md following project conventions.
-triggers: create an ADR, write an ADR, document a decision, record why we chose, capture architectural decision, ADR
+  Creates Architecture Decision Records (ADRs) to document architectural choices
+  and their rationale. Use when asked to create or write an ADR, document a
+  decision, record why something was chosen, or capture an architectural decision.
 ---
 
 # ADR Creator
@@ -38,40 +37,36 @@ If the user provides minimal context, use **AskUserQuestion** to collect essenti
 
 ```json
 {
-  "title": "ADR Information",
   "questions": [
     {
-      "id": "adr_decision",
-      "prompt": "What was the decision made? (e.g., 'Use PostgreSQL for primary storage')",
+      "question": "What was the decision made? (e.g., 'Use PostgreSQL for primary storage')",
+      "type": "text"
+    },
+    {
+      "question": "Which ADR format would you like to use?",
+      "type": "single_choice",
       "options": [
-        { "id": "free_text", "label": "I'll describe it in my next message" }
+        "MADR — structured, with options comparison (recommended)",
+        "Nygard — minimal: Context / Decision / Consequences",
+        "Y-Statement — single paragraph, very compact"
       ]
     },
     {
-      "id": "adr_format",
-      "prompt": "Which ADR format would you like to use?",
+      "question": "What is the current status of this decision?",
+      "type": "single_choice",
       "options": [
-        { "id": "madr", "label": "MADR — structured, with options comparison (recommended)" },
-        { "id": "nygard", "label": "Nygard — minimal: Context / Decision / Consequences" },
-        { "id": "y_statement", "label": "Y-Statement — single paragraph, very compact" }
+        "Accepted — decision is final",
+        "Proposed — decision is being finalized",
+        "Deprecated — this approach is no longer recommended",
+        "Superseded — replaced by a newer decision"
       ]
     },
     {
-      "id": "adr_status",
-      "prompt": "What is the current status of this decision?",
+      "question": "Does this ADR supersede a previous decision?",
+      "type": "single_choice",
       "options": [
-        { "id": "accepted", "label": "Accepted — decision is final" },
-        { "id": "proposed", "label": "Proposed — decision is being finalized" },
-        { "id": "deprecated", "label": "Deprecated — this approach is no longer recommended" },
-        { "id": "superseded", "label": "Superseded — replaced by a newer decision" }
-      ]
-    },
-    {
-      "id": "adr_supersedes",
-      "prompt": "Does this ADR supersede a previous decision?",
-      "options": [
-        { "id": "yes", "label": "Yes — I'll provide the ADR number/title" },
-        { "id": "no", "label": "No — this is a new decision" }
+        "Yes — I'll provide the ADR number/title",
+        "No — this is a new decision"
       ]
     }
   ]
