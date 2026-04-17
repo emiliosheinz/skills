@@ -32,14 +32,14 @@ npx skills add emiliosheinz/agent-skills --global
 
 | Skill | Description |
 |-------|-------------|
-| <nobr>`create-adr`</nobr> | Creates Architecture Decision Records (ADRs) to document significant architectural choices and their rationale for future team members. Saves the record to .specs/decisions/[slug].md following project conventions. |
-| <nobr>`create-implementation-plan`</nobr> | Creates implementation plans covering phases, tasks, sequencing, dependencies, milestones, and risks. Consumes a technical design document when one exists and breaks the work into executable, vertically-sliced phases. |
-| <nobr>`create-prd`</nobr> | Creates structured, explicit, and detailed Product Requirement Documents (PRDs). Captures problem statement, target users, success criteria, scope, and functional requirements before implementation begins. |
-| <nobr>`create-rfc`</nobr> | Creates structured Request for Comments (RFC) documents for proposing and deciding on significant changes. Drives stakeholder alignment before a major technical or process decision is made. |
-| <nobr>`create-technical-design`</nobr> | Creates technical design documents covering architecture, component responsibilities, data models, API contracts, trade-offs, and key decisions. Defines what to build and how it is structured — not how to execute the work. |
-| <nobr>`implement`</nobr> | Executes implementation by consuming existing PRD, technical design, and implementation plan artifacts. Turns requirements and design documents into working, tested code using TDD (Red-Green-Refactor). |
-| <nobr>`investigate`</nobr> | Guides the agent through a five-phase debugging workflow: structured intake, evidence investigation, ranked hypothesis generation, test-case reproduction, and a concrete fix proposal with prevention measures. Saves the final report to .specs/bugs/[bug-name].md following project conventions. |
-| <nobr>`research`</nobr> | Deeply explores a problem space — interviewing the user, scanning the codebase, and researching external references — before any spec or design work begins. Produces a structured RESEARCH.md artifact consumed by create-prd and create-technical-design. |
+| <nobr>`create-adr`</nobr> | Creates Architecture Decision Records (ADRs) to document architectural choices and their rationale. Use when asked to create or write an ADR, document a decision, record why something was chosen, or capture an architectural decision. |
+| <nobr>`create-implementation-plan`</nobr> | Creates implementation plans covering phases, tasks, sequencing, dependencies, milestones, and risks. Use when asked to create an implementation plan, plan an execution, break work into phases, or describe how to build something step by step. |
+| <nobr>`create-prd`</nobr> | Creates structured, explicit, and detailed Product Requirement Documents (PRDs). Use when asked to create or write a PRD, define product requirements, specify what to build, or capture requirements before implementation begins. |
+| <nobr>`create-rfc`</nobr> | Creates structured Request for Comments (RFC) documents for proposing and deciding on significant changes. Use when asked to create or write an RFC, draft a proposal, align stakeholders, or propose a change before a decision. |
+| <nobr>`create-technical-design`</nobr> | Creates technical design documents covering architecture, component responsibilities, data models, API contracts, and key decisions. Use when asked for a technical design, architecture document, system design, technical spec, or design doc. |
+| <nobr>`implement`</nobr> | Executes implementation by consuming existing PRD, technical design, and implementation plan artifacts. Use when asked to implement a feature, build something, start implementing, write the code, or execute an existing plan. |
+| <nobr>`investigate`</nobr> | Guides the agent through a five-phase debugging workflow to diagnose and fix issues. Use when reporting a bug, error, crash, broken or unexpected behavior, exception, failing test, or anything that is not working as expected. |
+| <nobr>`research`</nobr> | Deeply explores a problem space before any spec or design work begins. Use when asked to research a topic, explore or understand a problem space, or gather context before writing requirements or designing a solution. |
 
 ## Document Workflow
 
