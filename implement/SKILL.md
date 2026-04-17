@@ -124,16 +124,18 @@ After completing one task, mark it as `- [x]` in `IMPLEMENTATION-STATE.md`, brie
 
 ### Step 3 -- Review and Validate
 
-After all tasks are complete:
+After all tasks are complete, delegate the full review to a **specialized review subagent** with a fresh context. This ensures the validation is performed with an unbiased perspective, independent from the implementation context.
 
-1. **Run the full test suite** -- all tests must pass
-2. **Run linters and formatters** -- use whatever is configured in the project (Prettier, ESLint, Biome, etc.). Fix any issues.
+Provide the subagent with all relevant artifacts (PRD, technical design, implementation plan, and codebase access) and instruct it to perform the following checks, returning a structured verdict (pass / fail per check, plus actionable findings for any failure):
+
+1. **Run the full test suite** -- all tests must pass.
+2. **Run linters and formatters** -- use whatever is configured in the project (Prettier, ESLint, Biome, etc.). Report any unfixed issues.
 3. **Verify against requirements** -- check each requirement or derived scope item. Confirm the implementation satisfies it. Use the PRD if one exists; otherwise use the acceptance criteria derived in Step 1.
 4. **Verify against architecture** -- confirm the implementation follows the architectural decisions and code patterns. Use the technical design if one exists; otherwise verify consistency with the existing codebase patterns derived in Step 1.
 
-These checks are independent -- run them in parallel when possible.
+Checks 1 and 2 are independent and should be run in parallel; the same applies to checks 3 and 4. The subagent must return a clear summary of what passed, what failed, and exactly what needs to be fixed.
 
-If any verification fails, return to Step 2 and address the gap.
+If the subagent reports any failures, return to Step 2, address every finding, and re-run Step 3 with a new subagent invocation until all checks pass.
 
 ### Step 4 -- Summarize and Commit
 
