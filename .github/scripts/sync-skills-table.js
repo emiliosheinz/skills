@@ -10,12 +10,35 @@ function parseFrontmatter(filePath) {
   if (end === -1) return {};
   const fm = content.slice(3, end);
   const result = {};
-  for (const line of fm.split("\n")) {
+  const lines = fm.split("\n");
+  let i = 0;
+  while (i < lines.length) {
+    const line = lines[i];
     const colon = line.indexOf(":");
-    if (colon === -1) continue;
+    if (colon === -1) { i++; continue; }
     const key = line.slice(0, colon).trim();
-    const value = line.slice(colon + 1).trim();
-    result[key] = value;
+    const rawValue = line.slice(colon + 1).trim();
+    if (rawValue === ">" || rawValue === "|") {
+      // Block scalar: collect indented continuation lines
+      const blockLines = [];
+      i++;
+      while (i < lines.length && (lines[i].startsWith(" ") || lines[i].startsWith("\t") || lines[i].trim() === "")) {
+        blockLines.push(lines[i].trim());
+        i++;
+      }
+      // Fold: join non-empty lines with a space, paragraphs (empty lines) with newline
+      const folded = blockLines
+        .reduce((acc, l) => {
+          if (l === "") return acc + "\n";
+          if (acc.endsWith("\n") || acc === "") return acc + l;
+          return acc + " " + l;
+        }, "")
+        .trim();
+      result[key] = folded;
+    } else {
+      result[key] = rawValue;
+      i++;
+    }
   }
   return result;
 }
